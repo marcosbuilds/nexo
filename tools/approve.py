@@ -12,6 +12,13 @@ import re
 from typing import Any
 
 PATTERNS = [
+    r"\bmay\s+i\s+(do|send|create|use|check|schedule|continue)\b",
+    r"\bmay\s+i\s+(delete|archive|edit|close|open|start)\b",
+    r"\bwould\s+you\s+like\s+me\s+to\s+\w+\b",
+    r"\bmay\s+i\s+proceed\b",
+    r"\bdo\s+you\s+confirm\s+that\s+i\s+can\b",
+    # Keep Portuguese input recognition so an authorized user cannot bypass
+    # the same anti-reflex guard by speaking another supported language.
     r"\bposso\s+(fazer|enviar|criar|mandar|usar|consultar|marcar|agendar|seguir)\b",
     r"\bposso\s+(apagar|excluir|deletar|arquivar|editar|fechar|abrir|iniciar)\b",
     r"\bquer\s+que\s+eu\s+(faça|faça|envie|crie|mande|use|consulte|marque|agende|siga)\b",

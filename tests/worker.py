@@ -42,7 +42,7 @@ def test_owner_confirmation_guard_catches_conversation_permission_reflex():
         {
             "owner_channel": True,
             "authorized_and_executable": True,
-            "message": "Posso apagar essa conversa e iniciar uma DM?",
+            "message": "May I delete this conversation and start a DM?",
         }
     )
     assert result["decision"] == "BLOCK"
@@ -63,16 +63,16 @@ def test_retry_requires_new_state_and_stops_after_two_attempts():
 def test_decision_plan_contains_action_cost_evidence_and_recovery():
     mission = Mission(
         title="Verificar retorno",
-        objective="Confirmar o resultado de uma ação enviada.",
+        objective="Confirm the result of a sent action.",
         current_state="pending_consequence",
         next_action="verify_external_outcome",
-        success_condition="retorno confirmado com evidência",
+        success_condition="return confirmed with evidence",
         expected_minutes=7,
         risk=0.1,
     )
     plan = build_plan({"account_permission": True, "conversation_id": "c-1"}, mission)
     assert plan["action"] == "verify_external_outcome"
-    assert plan["expected_result"] == "retorno confirmado com evidência"
+    assert plan["expected_result"] == "return confirmed with evidence"
     assert plan["cost"]["expected_minutes"] == 7
     assert plan["fallback"]
     assert plan["stop_condition"] == "verified_result_or_persisted_material_blocker"
@@ -106,7 +106,7 @@ def test_context_packet_is_canonical_and_does_not_load_legacy_rulebooks(tmp_path
     # build() writes the normal cache, but this assertion only inspects the
     # returned packet and protects the source-selection contract.
     packet = build_context(force=True)
-    assert packet["version"] == "0.2.0"
+    assert packet["version"] == "0.3.0"
     assert packet["source_of_truth"] == "docs/core.md"
     assert packet["foundation_reference"] == "docs/foundations.md"
     assert "decision_contract" in packet

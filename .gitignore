@@ -17,6 +17,8 @@ workspace/*/working/
 workspace/jobs/*/source/
 workspace/jobs/*/final/
 screenshots/
+release/
+*.zip
 
 runtime_data/
 

@@ -35,7 +35,7 @@ def test_no_response_is_a_valid_communication_decision():
 
 
 def test_whatsapp_is_packaged_into_natural_bubbles():
-    draft = "A primeira parte explica o resultado que podemos entregar. A segunda parte delimita o que está incluído no trabalho. A terceira parte pede apenas o próximo passo para seguir com isso."
+    draft = "The first part explains the result we can deliver. The second part defines what is included in the work. The third part asks only for the next step to continue."
     out = communication({"response_needed":True,"draft":draft,"channel":"whatsapp"})
     assert out["decision"] == "SEND"
     assert 1 <= out["count"] <= 3

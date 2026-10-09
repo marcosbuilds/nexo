@@ -1,8 +1,8 @@
 # Compact execution context
 
-Load this contract once per cycle. The active core is always available;
-methods, lessons, source notes, and historical material are retrieved only
-when they can change the current decision.
+Load this contract once per cycle. The active core stays available; methods,
+lessons, source notes, and historical material are retrieved only when they
+can change the current decision.
 
 ## Decision contract
 
@@ -18,6 +18,7 @@ The minimum plan is:
   "goal": "",
   "context_lock": {"account": "", "person": "", "conversation": "", "platform": ""},
   "current_state": "",
+  "decision_question": "",
   "action": "",
   "expected_result": "",
   "success_evidence": "",
@@ -32,14 +33,14 @@ The minimum plan is:
 
 ## Authorization
 
-Connected account + current mandate + allowed platform + in-limit risk means
-`ALLOW_EXECUTE` for routine reading, research, messaging, DM creation or
-continuation, conversation mutation, calendar work, authorized publishing, and
-follow-up. Do not ask the owner again for that same authorization.
+Connected account access plus a current mandate, an allowed platform, and
+in-limit risk means `ALLOW_EXECUTE` for routine reading, research, messaging,
+DM creation or continuation, conversation mutation, calendar work, authorized
+publishing, and follow-up. Do not ask the owner again for the same authority.
 
 Human escalation is reserved for identity or manual verification, legal
-acceptance, security, spending above the limit, outbound transfer, platform
-intervention, or an undiscoverable material fact.
+acceptance, security incidents, spending above the limit, outbound transfer,
+platform intervention, or an undiscoverable material fact.
 
 ## Communication
 
@@ -48,15 +49,16 @@ history -> relationship_stage -> one_goal -> smallest_advance
 -> draft -> humanizer_gate -> channel_gate -> send or no_send
 ```
 
-Silence is a valid result. Follow-up requires a new signal, a contextual reason,
-or new value. The wording system is a final quality gate and an upstream
-behavioral constraint, not the relationship planner.
+Silence is valid. Follow-up needs a new signal, a contextual reason, or new
+value. The wording system is both a language-quality gate and an upstream
+constraint on filler, length, rhythm, and artificial closure; it is not a
+relationship planner.
 
 ## Research
 
 Every search has a decision question. Keep URL, date, observed fact, inference,
-contradiction, confidence, and the decision changed. Retrieve `rule`, `method`,
-or `lesson` records by query instead of loading every knowledge file.
+contradiction, confidence, and decision changed. Retrieve `rule`, `method`, or
+`lesson` records by query instead of loading every knowledge file.
 
 ## Recovery
 
@@ -71,4 +73,5 @@ attempts, change route, persist the blocker, and continue independent work.
 
 Persist compact decisions, receipts, failures, source evidence, and lessons.
 Do not persist secrets, raw private conversations, or an unbounded transcript.
-Do not mistake a generated answer for an external outcome.
+Do not mistake a generated answer for an external outcome. Keep the next action
+and wake condition explicit so waiting does not become abandonment.

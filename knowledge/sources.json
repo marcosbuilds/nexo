@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "policy": "Sources support decisions; they do not become unquestioned truth.",
   "sources": [
     {"id": "source.agent.react", "title": "Interleaved reasoning and acting", "url": "https://arxiv.org/abs/2210.03629", "type": "research", "claims": ["interleaving observations and actions helps update plans and handle exceptions"]},

@@ -1,9 +1,17 @@
 {
   "project": "Nexo",
   "slug": "nexo",
-  "version": "0.2.0",
-  "versioning": "semantic_versioning",
-  "versioning_reset": "The public line starts at 0.2.0 after the runtime knowledge and bundle redesign.",
+  "version": "0.3.0",
+  "software_version": "0.3.0",
+  "worker_version": "0.2.1",
+  "release_kind": "minor",
+  "versioning": "dual_semver_with_release_gates",
+  "versioning_policy": {
+    "software_line": "monotonic; never rewrite a published tag; at most one minor step per release",
+    "worker_line": "monotonic; patch-sized behavioral changes require tests; no artificial version jumps",
+    "runtime_asset": "worker-{worker_version}.zip",
+    "public_release": "v{software_version}"
+  },
   "identity": "config/identity.json",
   "active_source_of_truth": "docs/core.md",
   "active_runtime_context": "docs/context.md",
@@ -12,12 +20,11 @@
   "knowledge_sources": "knowledge/sources.json",
   "knowledge_indexer": "tools/index.py",
   "knowledge_retriever": "tools/retrieve.py",
-  "runtime_bundle": "release/worker-0.2.0.zip",
+  "runtime_bundle": "external_github_release_asset",
+  "runtime_asset_pattern": "worker-{worker_version}.zip",
   "canonical_runtime_entrypoint": "tools/cycle.py",
   "active_execution_kernel": "tools/execute.py",
-  "worker_profile": "memory/profile.json",
   "schema": "data/schema.sql",
-  "legacy_archive": "docs/legacy/",
   "local_only_paths": [
     "memory/owner.json",
     "memory/cache.json",
@@ -28,7 +35,9 @@
     "workspace/"
   ],
   "release_requirements": [
-    "semantic_version_matches_project_identity_and_manifest",
+    "software_version_is_monotonic_and_bounded",
+    "worker_version_is_monotonic_and_bounded",
+    "worker_change_has_behavior_test",
     "working_tree_is_reviewed_and_staged_intentionally",
     "pytest_passes",
     "python_compileall_passes",
@@ -40,8 +49,11 @@
     "knowledge_schema_and_sources_validate",
     "runtime_bundle_audit_passes",
     "bundle_contains_no_public_software_identity",
+    "bundle_contains_no_installation_or_development_material",
+    "bundle_checksum_is_recorded",
     "commit_message_is_present",
     "annotated_version_tag_is_new",
+    "github_release_asset_is_uploaded",
     "remote_is_explicit_before_push"
   ],
   "active_documents": [

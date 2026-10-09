@@ -1,16 +1,22 @@
 {
-  "version": "0.2.0",
-  "strategy": "focused_niche_validation",
-  "purpose": "Discover and validate economically viable offer × buyer hypotheses from real capability and demand evidence; do not lock the worker into a predefined service or niche.",
+  "version": "0.3.0",
+  "strategy": "evidence_first_adaptive_market_validation",
+  "purpose": "Compare offer and buyer hypotheses using observed need, capability evidence, permitted contact, economics, and delivery feedback.",
   "offer": {
-    "service_family": "Not fixed. Canva creative kits are one candidate among capability-matched digital services.",
-    "pilot": "A small paid pilot of one specific deliverable selected after verifying capability, buyer need, cost and channel.",
-    "recurring": "Offer recurring delivery only when repeat demand is observed or tested.",
-    "pricing": "Calculate from scope, effort, direct cost, rework risk, public market evidence, value and close probability. Never invent a price or discount.",
-    "positioning": "Sell a concrete result and honest scope, not a technology label or a generic promise."
+    "service_family": "Not fixed; select only after capability, buyer need, cost, and permitted channel are verified.",
+    "pilot": "Start with one small paid deliverable with a clear input, output, scope, and acceptance condition.",
+    "recurring": "Offer recurring work only after repeat demand or a comparable test is observed.",
+    "pricing": "Ground price in scope, effort, direct cost, rework risk, market evidence, value, and close probability.",
+    "positioning": "Sell a concrete result and honest scope, never a technology label or generic promise."
+  },
+  "selection": {
+    "initial_scan_candidates": 4,
+    "initial_scan_candidate_ids": ["creative_assets_home_services", "landing_page_local_business", "python_workflow_automation", "verified_market_research"],
+    "minimum_qualified_leads_per_candidate": 3,
+    "minimum_capability_tests_per_candidate": 1
   },
   "focus_rules": {
-    "one_primary_niche_at_a_time": true,
+    "one_primary_hypothesis_at_a_time": true,
     "primary_effort_share": 0.7,
     "adjacent_research_share": 0.2,
     "capability_and_offer_improvement_share": 0.1,
@@ -20,10 +26,9 @@
     "minimum_alternative_qualified_leads_before_switch": 5,
     "minimum_alternative_outreach_before_switch": 3,
     "switch_score_margin_points": 12,
-    "do_not_switch_on_prior_score_alone": true,
-    "record_each_real_observation": true,
+    "record_each_observation": true,
     "reassess_after_sales_and_delivery_feedback": true,
-    "switch_requires_evidence_for_both_niches": true
+    "do_not_switch_on_prior_score_alone": true
   },
   "scoring_weights": {
     "observed_need": 0.19,
@@ -38,690 +43,105 @@
   },
   "niches": [
     {
-      "id": "barber_beauty",
-      "name": "Barbearias e salões de beleza independentes",
-      "priority": 1,
-      "offer_angle": "Artes promocionais que divulgam serviços reais, horários, combos confirmados e agendamento pelo WhatsApp, com identidade visual consistente.",
-      "customer_problem": "O negócio precisa divulgar serviços e preencher horários sem publicar peças visualmente desconectadas ou pouco legíveis no celular.",
-      "signals_to_verify": [
-        "perfil comercial ativo com publicações visuais inconsistentes",
-        "serviços e formas de agendamento identificáveis",
-        "promoção, agenda ou campanha recente que possa ser melhor comunicada",
-        "identidade visual existente ou oportunidade clara de organizar uma",
-        "canal público e permitido para contato comercial"
-      ],
-      "search_queries": [
-        "barbearias independentes Instagram agendamento WhatsApp divulgação de serviços Brasil",
-        "salões de beleza independentes Instagram agenda promoções serviços WhatsApp Brasil",
-        "barbearia perfil comercial Instagram serviços horários agendamento WhatsApp"
-      ],
-      "prior": {
-        "observed_need": 0.7,
-        "recurrence": 0.88,
-        "capability_fit": 0.9,
-        "contactability": 0.82,
-        "budget_plausibility": 0.56,
-        "reply_rate": 0.2,
-        "sale_rate": 0.08,
-        "differentiation": 0.68,
-        "risk": 0.08
-      },
-      "visual_direction": {
-        "style": "fotografia editorial comercial natural, acabamento cuidado e sensação de negócio real, sem visual de template pronto",
-        "palette": [
-          "cores reais da marca",
-          "grafite suave",
-          "off-white",
-          "um acento quente discreto quando compatível"
-        ],
-        "subject_examples": [
-          "mãos de barbeiro executando um acabamento real",
-          "detalhe de ferramentas reais em bancada organizada",
-          "profissional trabalhando em ambiente de salão real"
-        ],
-        "avoid": [
-          "clichê preto e dourado sem evidência de marca",
-          "barba ou cabelo com textura plástica",
-          "ferramentas deformadas",
-          "ícones 3D decorativos sem função"
-        ]
-      },
-      "aliases": [
-        "barbearia",
-        "barbeiro",
-        "salão de beleza",
-        "cabeleireiro",
-        "manicure",
-        "unhas",
-        "estética facial",
-        "estética corporal",
-        "beleza"
-      ]
-    },
-    {
-      "id": "home_services",
-      "name": "Serviços residenciais e manutenção de ar-condicionado",
-      "priority": 2,
-      "offer_angle": "Peças de campanha que explicam serviço, região atendida e próximo passo para orçamento, usando fotos reais ou elementos visuais específicos do serviço.",
-      "customer_problem": "O prestador precisa explicar serviço e gerar pedidos de orçamento com clareza, sem promessas técnicas ou fotos enganosas.",
-      "signals_to_verify": [
-        "serviço e região de atendimento publicados",
-        "oferta de manutenção, instalação ou limpeza real",
-        "perfil sem hierarquia clara ou sem chamada para orçamento",
-        "canal público e permitido para contato comercial"
-      ],
-      "search_queries": [
-        "empresa limpeza manutenção ar condicionado Instagram orçamento WhatsApp Brasil",
-        "prestador instalação ar condicionado perfil comercial serviços região atendida",
-        "empresa de manutenção residencial Instagram divulgação de serviços orçamento WhatsApp"
-      ],
-      "prior": {
-        "observed_need": 0.73,
-        "recurrence": 0.69,
-        "capability_fit": 0.82,
-        "contactability": 0.75,
-        "budget_plausibility": 0.67,
-        "reply_rate": 0.18,
-        "sale_rate": 0.09,
-        "differentiation": 0.7,
-        "risk": 0.1
-      },
-      "visual_direction": {
-        "style": "fotografia comercial documental limpa, luz natural, detalhes técnicos críveis e ambiente residencial real",
-        "palette": [
-          "cores reais da marca",
-          "branco quente",
-          "cinza mineral",
-          "azul moderado quando compatível"
-        ],
-        "subject_examples": [
-          "técnico inspecionando unidade split real",
-          "ferramentas de manutenção organizadas",
-          "ambiente residencial bem cuidado com equipamento visível"
-        ],
-        "avoid": [
-          "flocos de neve decorativos",
-          "promessas de economia sem prova",
-          "equipamento com peças inexistentes",
-          "antes e depois fabricados"
-        ]
-      },
-      "aliases": [
-        "ar-condicionado",
-        "ar condicionado",
-        "instalação residencial",
-        "manutenção residencial",
-        "eletricista",
-        "encanador",
-        "reformas",
-        "serviços residenciais"
-      ]
-    },
-    {
-      "id": "food_local",
-      "name": "Restaurantes, lanchonetes e pequenos negócios de alimentação",
-      "priority": 3,
-      "offer_angle": "Peças de cardápio, produto do dia e ofertas confirmadas que facilitem pedido pelo canal realmente utilizado pelo estabelecimento.",
-      "customer_problem": "O negócio precisa destacar um produto ou oferta de forma apetitosa e legível, sem poluir a arte ou esconder informação importante.",
-      "signals_to_verify": [
-        "cardápio ou produtos reais publicamente identificáveis",
-        "ofertas recorrentes ou produtos do dia",
-        "fotos fracas, desatualizadas ou comunicação visual inconsistente",
-        "canal real de pedido ou reserva"
-      ],
-      "search_queries": [
-        "lanchonete independente Instagram cardápio pedidos WhatsApp Brasil",
-        "restaurante pequeno Instagram prato do dia cardápio pedidos WhatsApp",
-        "confeitaria padaria artesanal perfil comercial produtos encomendas Instagram"
-      ],
-      "prior": {
-        "observed_need": 0.77,
-        "recurrence": 0.9,
-        "capability_fit": 0.88,
-        "contactability": 0.8,
-        "budget_plausibility": 0.45,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.54,
-        "risk": 0.14
-      },
-      "visual_direction": {
-        "style": "fotografia de alimento editorial natural, textura real, iluminação direcional suave e composição focada em um único produto",
-        "palette": [
-          "cores reais da marca",
-          "tons naturais do alimento",
-          "fundo simples compatível com a marca"
-        ],
-        "subject_examples": [
-          "produto real em close editorial",
-          "prato servido em mesa coerente com o estabelecimento",
-          "embalagem real com área limpa para composição gráfica"
-        ],
-        "avoid": [
-          "comida com aparência de plástico",
-          "ingredientes inexistentes",
-          "preço ou oferta inventados",
-          "excesso de brilhos e elementos decorativos"
-        ]
-      },
-      "aliases": [
-        "restaurante",
-        "lanchonete",
-        "hamburgueria",
-        "pizzaria",
-        "confeitaria",
-        "padaria",
-        "delivery",
-        "alimentação",
-        "comida"
-      ]
-    },
-    {
-      "id": "auto_detailing",
-      "name": "Estética automotiva e detalhamento independente",
-      "priority": 4,
-      "offer_angle": "Peças que mostram serviços reais, diferenciais verificáveis e pedido de orçamento, usando imagens autorizadas do próprio negócio quando existirem.",
-      "customer_problem": "O negócio precisa comunicar o serviço e a qualidade do acabamento sem recorrer a fotos genéricas que não representam o trabalho entregue.",
-      "signals_to_verify": [
-        "serviços de detalhamento claramente listados",
-        "portfólio público de trabalhos próprios ou autorização para usar imagens",
-        "publicações inconsistentes ou CTA ausente",
-        "forma pública de solicitar orçamento"
-      ],
-      "search_queries": [
-        "estética automotiva independente Instagram detalhamento orçamento WhatsApp Brasil",
-        "detalhamento automotivo perfil comercial polimento vitrificação serviços Instagram",
-        "estética automotiva fotos de trabalhos próprios agendamento orçamento"
-      ],
-      "prior": {
-        "observed_need": 0.67,
-        "recurrence": 0.72,
-        "capability_fit": 0.86,
-        "contactability": 0.72,
-        "budget_plausibility": 0.68,
-        "reply_rate": 0.19,
-        "sale_rate": 0.09,
-        "differentiation": 0.73,
-        "risk": 0.08
-      },
-      "visual_direction": {
-        "style": "fotografia automotiva comercial realista, enquadramento preciso, reflexos fisicamente plausíveis e foco no acabamento",
-        "palette": [
-          "cores reais da marca",
-          "neutros frios ou quentes coerentes com a oficina",
-          "um único acento de destaque"
-        ],
-        "subject_examples": [
-          "detalhe de polimento em painel de carro real",
-          "reflexo natural na pintura automotiva",
-          "profissional aplicando produto de acabamento em ambiente real"
-        ],
-        "avoid": [
-          "reflexos impossíveis",
-          "carros deformados",
-          "resultados antes/depois não comprovados",
-          "luzes neon gratuitas"
-        ]
-      },
-      "aliases": [
-        "estética automotiva",
-        "detalhamento automotivo",
-        "car detailing",
-        "lava-jato",
-        "lavagem automotiva",
-        "polimento automotivo"
-      ]
-    }
-  ],
-  "measurement": {
-    "event_types": [
-      "capability_tested",
-      "research_cycle",
-      "qualified_lead",
-      "outreach_sent",
-      "reply_positive",
-      "reply_negative",
-      "sale",
-      "delivery_positive",
-      "delivery_negative",
-      "lead_rejected"
-    ],
-    "record_only_observed_facts": true,
-    "never_count_search_result_as_qualified_lead_without_evidence": true,
-    "keep_public_evidence_url_instead_of_unneeded_personal_data": true,
-    "record_reason_for_rejection": true,
-    "require_capability_test_before_claiming_delivery": true
-  },
-  "selection": {
-    "mode": "comparative_offer_buyer_scan",
-    "initial_scan_candidates": 4,
-    "initial_scan_candidate_ids": [
-      "creative_assets_home_services",
-      "landing_page_local_business",
-      "python_workflow_automation",
-      "verified_market_research"
-    ],
-    "minimum_qualified_leads_per_candidate": 3,
-    "prior_scores_are_hypotheses_only": true,
-    "select_primary_focus_only_after_comparable_observations": true,
-    "research_must_record_public_evidence": true,
-    "capability_must_be_tested_before_selling_as_available": true,
-    "offer_family_is_not_fixed": true,
-    "minimum_capability_tests_per_candidate": 1
-  },
-  "commercial_hypotheses": [
-    {
       "id": "creative_assets_home_services",
-      "name": "Kit de artes de campanha para serviços residenciais",
-      "buyer_segment": "Prestadores de manutenção e serviços residenciais com presença comercial pública",
-      "offer_angle": "Criar poucas peças específicas que expliquem serviço, região atendida e como pedir orçamento.",
-      "customer_problem": "O cliente potencial não entende rapidamente o que é oferecido ou como solicitar orçamento.",
-      "required_capabilities": [
-        "visual_design",
-        "canva_ai_or_equivalent",
-        "commercial_copywriting",
-        "brand_research"
-      ],
-      "capability_test": "Produzir uma peça demonstrativa com fatos fornecidos, sem publicar; revisar hierarquia, realismo e legibilidade em tela pequena.",
-      "signals_to_verify": [
-        "serviço e região informados publicamente",
-        "pouca clareza na comunicação ou CTA ausente",
-        "uso de canal comercial público",
-        "identidade/serviços observáveis sem inferir dados privados"
-      ],
-      "search_queries": [
-        "empresa de manutenção residencial orçamento Instagram Brasil",
-        "empresa de ar-condicionado instalação limpeza orçamento perfil comercial",
-        "prestadores locais com serviço e canal de orçamento públicos"
-      ],
-      "prior": {
-        "observed_need": 0.55,
-        "recurrence": 0.55,
-        "capability_fit": 0.5,
-        "contactability": 0.55,
-        "budget_plausibility": 0.5,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.5,
-        "risk": 0.15
-      }
+      "name": "Creative assets for local home services",
+      "buyer_segment": "Independent service businesses with a public offer and a permitted commercial contact route.",
+      "offer_angle": "Create clear, mobile-readable promotional assets from verified services, service area, brand evidence, and contact routes.",
+      "customer_problem": "The business communicates inconsistently and makes it difficult to understand the service or next step.",
+      "required_capabilities": ["visual_design", "commercial_copy", "brand_research", "mobile_first_review"],
+      "capability_test": "Create a sample from fictional facts, test hierarchy and mobile readability, and state all limits.",
+      "signals_to_verify": ["real service is public", "commercial channel is permitted", "communication problem is observable", "brand evidence is available"],
+      "search_queries": ["local service business public profile booking contact", "home service business unclear offer contact", "local business promotional content service area"],
+      "visual_direction": {"style": "documentary commercial photography with one clear subject and no generic template look", "palette": ["observed brand colors", "warm white", "mineral gray", "one compatible accent"], "subject_examples": ["a real technician performing a documented service"], "avoid": ["invented proof", "unrealistic equipment", "decorative elements without a job"]},
+      "prior": {"observed_need": 0.7, "recurrence": 0.7, "capability_fit": 0.7, "contactability": 0.7, "budget_plausibility": 0.55, "reply_rate": 0.18, "sale_rate": 0.08, "differentiation": 0.6, "risk": 0.1}
     },
     {
       "id": "landing_page_local_business",
-      "name": "Página simples de serviço ou orçamento para negócio local",
-      "buyer_segment": "Negócios com serviço identificável e presença web insuficiente",
-      "offer_angle": "Entregar uma página responsiva pequena que explique serviço, prova real e próximo passo comercial.",
-      "customer_problem": "O interessado não encontra rapidamente escopo, área atendida, informações essenciais ou um caminho para solicitar orçamento.",
-      "required_capabilities": [
-        "html_css",
-        "responsive_web_design",
-        "form_or_contact_flow",
-        "testing_and_deployment"
-      ],
-      "capability_test": "Montar uma página de demonstração responsiva, testar links e formulário e validar publicação/entrega sem alegar integração inexistente.",
-      "signals_to_verify": [
-        "site ausente, desatualizado ou com caminho de contato confuso",
-        "oferta e público identificáveis",
-        "benefício demonstrável sem promessa comercial fabricada",
-        "domínio/contato e canal de contratação válidos"
-      ],
-      "search_queries": [
-        "negócio local serviços site desatualizado orçamento",
-        "prestador de serviço site contato confuso região atendida",
-        "pequena empresa página de serviço orçamento online Brasil"
-      ],
-      "prior": {
-        "observed_need": 0.5,
-        "recurrence": 0.4,
-        "capability_fit": 0.5,
-        "contactability": 0.5,
-        "budget_plausibility": 0.55,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.55,
-        "risk": 0.22
-      }
+      "name": "Small service pages for local businesses",
+      "buyer_segment": "Businesses with an identifiable service and an unclear or incomplete online path to contact.",
+      "offer_angle": "Deliver a small responsive page that explains the verified offer, scope, service area, proof, and next step.",
+      "customer_problem": "Interested people cannot quickly understand the offer or reach the right contact route.",
+      "required_capabilities": ["html_css", "responsive_web_design", "form_or_contact_flow", "testing_and_deployment"],
+      "capability_test": "Build a fictional responsive sample, test links and form behavior, and state deployment limits.",
+      "signals_to_verify": ["site is absent or unclear", "offer and audience are observable", "benefit can be shown without fabricated claims", "contact path is valid"],
+      "search_queries": ["local service business outdated website contact", "service business unclear quote path", "small business service page opportunity"],
+      "prior": {"observed_need": 0.5, "recurrence": 0.4, "capability_fit": 0.5, "contactability": 0.5, "budget_plausibility": 0.55, "reply_rate": 0.18, "sale_rate": 0.07, "differentiation": 0.55, "risk": 0.22}
     },
     {
       "id": "python_workflow_automation",
-      "name": "Automação pequena de tarefa repetitiva com Python",
-      "buyer_segment": "Pequenas operações que repetem tarefas digitais em arquivos, planilhas ou sistemas autorizados",
-      "offer_angle": "Automatizar uma tarefa delimitada com entrada, saída e teste claros, reduzindo trabalho manual verificável.",
-      "customer_problem": "Uma tarefa repetitiva consome tempo ou gera erros que podem ser medidos.",
-      "required_capabilities": [
-        "python",
-        "workflow_analysis",
-        "data_handling",
-        "testing_and_error_recovery"
-      ],
-      "capability_test": "Automatizar um caso de teste com dados fictícios, comparar saída com resultado esperado e documentar limites e falhas.",
-      "signals_to_verify": [
-        "processo repetitivo descrito por fonte pública ou pelo interessado",
-        "entrada e resultado delimitáveis",
-        "acesso e permissões autorizados",
-        "benefício pode ser calculado sem prometer economia não medida"
-      ],
-      "search_queries": [
-        "pequena empresa tarefa manual planilha automação processo",
-        "empresa busca automação de relatórios arquivos CSV Python",
-        "oportunidades de automação operacional freelancer tarefas repetitivas"
-      ],
-      "prior": {
-        "observed_need": 0.5,
-        "recurrence": 0.7,
-        "capability_fit": 0.5,
-        "contactability": 0.45,
-        "budget_plausibility": 0.58,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.58,
-        "risk": 0.25
-      }
+      "name": "Small workflow and reporting automation",
+      "buyer_segment": "Small operations with a repetitive, authorized digital task and a measurable output.",
+      "offer_angle": "Automate one bounded workflow with a testable input, output, error path, and handoff.",
+      "customer_problem": "Manual repetition consumes time or creates measurable errors.",
+      "required_capabilities": ["python", "workflow_analysis", "data_handling", "testing", "error_recovery"],
+      "capability_test": "Automate a fictional case, compare output to an expected result, and document failure boundaries.",
+      "signals_to_verify": ["repetitive task is described", "input and output are bounded", "access is authorized", "benefit can be measured"],
+      "search_queries": ["small business repetitive spreadsheet workflow automation", "manual report process automation opportunity", "authorized data cleanup reporting workflow"],
+      "prior": {"observed_need": 0.55, "recurrence": 0.7, "capability_fit": 0.5, "contactability": 0.5, "budget_plausibility": 0.58, "reply_rate": 0.16, "sale_rate": 0.07, "differentiation": 0.58, "risk": 0.2}
     },
     {
       "id": "verified_market_research",
-      "name": "Pesquisa comercial e lista de oportunidades verificadas",
-      "buyer_segment": "Prestadores B2B e pequenos negócios que precisam encontrar compradores ou concorrentes relevantes",
-      "offer_angle": "Entregar pesquisa curta com fontes públicas, evidências, critérios de qualificação e próximos passos acionáveis.",
-      "customer_problem": "O cliente gasta tempo procurando contatos e não consegue distinguir oportunidade real de lista genérica.",
-      "required_capabilities": [
-        "web_research",
-        "source_validation",
-        "structured_data",
-        "privacy_and_contact_compliance"
-      ],
-      "capability_test": "Produzir uma amostra pequena com URL, data, evidência de adequação, critérios e limitações verificáveis.",
-      "signals_to_verify": [
-        "cliente potencial tem uma meta comercial explícita",
-        "mercado e critérios de lead delimitáveis",
-        "fontes públicas atuais disponíveis",
-        "uso de dados e contato respeita leis e políticas"
-      ],
-      "search_queries": [
-        "serviço de pesquisa comercial leads qualificados empresas pequenas",
-        "freelance pesquisa de mercado concorrentes fontes públicas",
-        "demanda por listas de empresas qualificadas com evidência"
-      ],
-      "prior": {
-        "observed_need": 0.48,
-        "recurrence": 0.55,
-        "capability_fit": 0.5,
-        "contactability": 0.55,
-        "budget_plausibility": 0.48,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.52,
-        "risk": 0.18
-      }
+      "name": "Evidence-based commercial research",
+      "buyer_segment": "Small businesses that need current, source-backed market or prospect research.",
+      "offer_angle": "Deliver a small research set with URLs, dates, qualification criteria, contradictions, limits, and next actions.",
+      "customer_problem": "Generic lists mix stale, irrelevant, and unqualified information.",
+      "required_capabilities": ["web_research", "source_validation", "structured_data", "privacy_compliance"],
+      "capability_test": "Produce a public sample with source dates, observed evidence, qualification criteria, and limitations.",
+      "signals_to_verify": ["decision goal is explicit", "criteria are bounded", "current public sources exist", "contact use is permitted"],
+      "search_queries": ["small business evidence based market research need", "public source competitor research service", "qualified commercial research with source URLs"],
+      "prior": {"observed_need": 0.5, "recurrence": 0.55, "capability_fit": 0.5, "contactability": 0.55, "budget_plausibility": 0.48, "reply_rate": 0.16, "sale_rate": 0.07, "differentiation": 0.52, "risk": 0.18}
     },
     {
-      "id": "catalog_order_flow_food",
-      "name": "Catálogo digital e fluxo simples de pedidos para alimentação",
-      "buyer_segment": "Pequenos restaurantes, confeitarias e negócios com produtos e pedidos recorrentes",
-      "offer_angle": "Organizar produtos reais e caminho de pedido em catálogo ou peça editável legível no celular.",
-      "customer_problem": "Produtos, opções ou forma de pedir estão dispersos ou difíceis de consultar.",
-      "required_capabilities": [
-        "visual_design",
-        "structured_content",
-        "mobile_first_layout",
-        "channel_flow_testing"
-      ],
-      "capability_test": "Criar uma amostra com produtos fornecidos, testar leitura no celular e confirmar o caminho de pedido existente.",
-      "signals_to_verify": [
-        "menu ou produtos reais acessíveis publicamente",
-        "canal real de pedidos",
-        "informações de preço e disponibilidade verificadas",
-        "necessidade de atualização ou organização observável"
-      ],
-      "search_queries": [
-        "confeitaria cardápio digital encomendas WhatsApp",
-        "lanchonete menu online pedidos canal público",
-        "pequeno restaurante catálogo digital produtos reais"
-      ],
-      "prior": {
-        "observed_need": 0.55,
-        "recurrence": 0.7,
-        "capability_fit": 0.5,
-        "contactability": 0.6,
-        "budget_plausibility": 0.45,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.48,
-        "risk": 0.2
-      }
-    },
-    {
-      "id": "data_cleanup_reporting",
-      "name": "Organização de planilhas e relatórios operacionais",
-      "buyer_segment": "Pequenos negócios com planilhas recorrentes ou relatórios manuais",
-      "offer_angle": "Limpar, consolidar ou resumir um conjunto delimitado de dados com verificações e saída reutilizável.",
-      "customer_problem": "Dados duplicados, inconsistentes ou difíceis de transformar em uma visão útil.",
-      "required_capabilities": [
-        "spreadsheet_handling",
-        "python_or_data_tools",
-        "data_validation",
-        "privacy_and_access_control"
-      ],
-      "capability_test": "Processar um conjunto fictício, conferir contagens e exceções e comparar o relatório com um resultado esperado.",
-      "signals_to_verify": [
-        "tarefa de relatório/planilha repetida e delimitada",
-        "entrada disponível com autorização",
-        "resultado pode ser comparado e validado",
-        "não exige acesso indevido a dados pessoais ou financeiros"
-      ],
-      "search_queries": [
-        "serviços de organização de planilhas relatórios pequenos negócios",
-        "freelance limpeza dados planilhas automatização relatórios",
-        "pequena empresa relatório manual planilha operação"
-      ],
-      "prior": {
-        "observed_need": 0.48,
-        "recurrence": 0.65,
-        "capability_fit": 0.5,
-        "contactability": 0.45,
-        "budget_plausibility": 0.52,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.5,
-        "risk": 0.23
-      }
+      "id": "home_services",
+      "name": "Home services",
+      "offer_angle": "Communicate a verified local service clearly.",
+      "customer_problem": "The service needs a clear next step.",
+      "signals_to_verify": ["real service", "audience", "brand evidence", "contact channel"],
+      "search_queries": ["home service business public offer"],
+      "required_capabilities": ["visual_design"],
+      "visual_direction": {"style": "specific documentary commercial direction", "palette": ["observed brand colors", "natural neutrals"], "subject_examples": ["a real service in a plausible environment"], "avoid": ["generic industry clichés"]},
+      "aliases": ["air conditioning", "air conditioner", "ar condicionado", "home service"],
+      "prior": {"observed_need": 0.5, "recurrence": 0.5, "capability_fit": 0.5, "contactability": 0.5, "budget_plausibility": 0.5, "reply_rate": 0.18, "sale_rate": 0.07, "differentiation": 0.5, "risk": 0.15}
     },
     {
       "id": "creative_assets_barber_beauty",
-      "name": "Kit de artes comerciais para barbearias e salões",
-      "buyer_segment": "Barbearias e salões de beleza independentes",
-      "offer_angle": "Artes promocionais que divulgam serviços reais, horários, combos confirmados e agendamento pelo WhatsApp, com identidade visual consistente.",
-      "customer_problem": "O negócio precisa divulgar serviços e preencher horários sem publicar peças visualmente desconectadas ou pouco legíveis no celular.",
-      "required_capabilities": [
-        "visual_design",
-        "canva_ai_or_equivalent",
-        "commercial_copywriting",
-        "brand_research"
-      ],
-      "capability_test": "Criar uma peça demonstrativa contextual, com fatos de amostra identificados, e revisar hierarquia/legibilidade/artefatos.",
-      "signals_to_verify": [
-        "perfil comercial ativo com publicações visuais inconsistentes",
-        "serviços e formas de agendamento identificáveis",
-        "promoção, agenda ou campanha recente que possa ser melhor comunicada",
-        "identidade visual existente ou oportunidade clara de organizar uma",
-        "canal público e permitido para contato comercial"
-      ],
-      "search_queries": [
-        "barbearias independentes Instagram agendamento WhatsApp divulgação de serviços Brasil",
-        "salões de beleza independentes Instagram agenda promoções serviços WhatsApp Brasil",
-        "barbearia perfil comercial Instagram serviços horários agendamento WhatsApp"
-      ],
-      "visual_direction": {
-        "style": "fotografia editorial comercial natural, acabamento cuidado e sensação de negócio real, sem visual de template pronto",
-        "palette": [
-          "cores reais da marca",
-          "grafite suave",
-          "off-white",
-          "um acento quente discreto quando compatível"
-        ],
-        "subject_examples": [
-          "mãos de barbeiro executando um acabamento real",
-          "detalhe de ferramentas reais em bancada organizada",
-          "profissional trabalhando em ambiente de salão real"
-        ],
-        "avoid": [
-          "clichê preto e dourado sem evidência de marca",
-          "barba ou cabelo com textura plástica",
-          "ferramentas deformadas",
-          "ícones 3D decorativos sem função"
-        ]
-      },
-      "aliases": [
-        "barbearia",
-        "barbeiro",
-        "salão de beleza",
-        "cabeleireiro",
-        "manicure",
-        "unhas",
-        "estética facial",
-        "estética corporal",
-        "beleza"
-      ],
-      "prior": {
-        "observed_need": 0.7,
-        "recurrence": 0.88,
-        "capability_fit": 0.5,
-        "contactability": 0.82,
-        "budget_plausibility": 0.56,
-        "reply_rate": 0.2,
-        "sale_rate": 0.08,
-        "differentiation": 0.68,
-        "risk": 0.08
-      }
+      "name": "Creative assets for independent beauty businesses",
+      "buyer_segment": "Independent beauty businesses with public services and a permitted contact route.",
+      "offer_angle": "Create clear promotional assets from verified services, schedule, brand evidence, and contact routes.",
+      "customer_problem": "The business needs consistent, legible communication without invented claims.",
+      "required_capabilities": ["visual_design", "commercial_copy", "brand_research"],
+      "capability_test": "Create a contextual fictional sample and review hierarchy, legibility, and artifacts.",
+      "signals_to_verify": ["services are public", "commercial channel is permitted", "communication issue is observable"],
+      "search_queries": ["independent beauty business public services booking"],
+      "visual_direction": {"style": "editorial commercial photography with a real subject", "palette": ["observed brand colors", "natural neutrals"], "subject_examples": ["a documented professional service"], "avoid": ["generic luxury clichés"]},
+      "aliases": ["beauty", "barber", "salon"],
+      "prior": {"observed_need": 0.7, "recurrence": 0.7, "capability_fit": 0.5, "contactability": 0.7, "budget_plausibility": 0.56, "reply_rate": 0.18, "sale_rate": 0.08, "differentiation": 0.6, "risk": 0.1}
     },
     {
-      "id": "creative_assets_food_local",
-      "name": "Kit de cardápio e campanhas para alimentação local",
-      "buyer_segment": "Restaurantes, lanchonetes e pequenos negócios de alimentação",
-      "offer_angle": "Peças de cardápio, produto do dia e ofertas confirmadas que facilitem pedido pelo canal realmente utilizado pelo estabelecimento.",
-      "customer_problem": "O negócio precisa destacar um produto ou oferta de forma apetitosa e legível, sem poluir a arte ou esconder informação importante.",
-      "required_capabilities": [
-        "visual_design",
-        "canva_ai_or_equivalent",
-        "commercial_copywriting",
-        "brand_research"
-      ],
-      "capability_test": "Criar uma peça demonstrativa contextual, com fatos de amostra identificados, e revisar hierarquia/legibilidade/artefatos.",
-      "signals_to_verify": [
-        "cardápio ou produtos reais publicamente identificáveis",
-        "ofertas recorrentes ou produtos do dia",
-        "fotos fracas, desatualizadas ou comunicação visual inconsistente",
-        "canal real de pedido ou reserva"
-      ],
-      "search_queries": [
-        "lanchonete independente Instagram cardápio pedidos WhatsApp Brasil",
-        "restaurante pequeno Instagram prato do dia cardápio pedidos WhatsApp",
-        "confeitaria padaria artesanal perfil comercial produtos encomendas Instagram"
-      ],
-      "visual_direction": {
-        "style": "fotografia de alimento editorial natural, textura real, iluminação direcional suave e composição focada em um único produto",
-        "palette": [
-          "cores reais da marca",
-          "tons naturais do alimento",
-          "fundo simples compatível com a marca"
-        ],
-        "subject_examples": [
-          "produto real em close editorial",
-          "prato servido em mesa coerente com o estabelecimento",
-          "embalagem real com área limpa para composição gráfica"
-        ],
-        "avoid": [
-          "comida com aparência de plástico",
-          "ingredientes inexistentes",
-          "preço ou oferta inventados",
-          "excesso de brilhos e elementos decorativos"
-        ]
-      },
-      "aliases": [
-        "restaurante",
-        "lanchonete",
-        "hamburgueria",
-        "pizzaria",
-        "confeitaria",
-        "padaria",
-        "delivery",
-        "alimentação",
-        "comida"
-      ],
-      "prior": {
-        "observed_need": 0.77,
-        "recurrence": 0.9,
-        "capability_fit": 0.5,
-        "contactability": 0.8,
-        "budget_plausibility": 0.45,
-        "reply_rate": 0.18,
-        "sale_rate": 0.07,
-        "differentiation": 0.54,
-        "risk": 0.14
-      }
+      "id": "food_local",
+      "name": "Local food businesses",
+      "offer_angle": "Communicate verified products and ordering routes clearly.",
+      "customer_problem": "Products or ordering information are difficult to consult.",
+      "signals_to_verify": ["real products", "real ordering route"],
+      "search_queries": ["local food business public menu order"],
+      "required_capabilities": ["visual_design", "structured_content"],
+      "prior": {"observed_need": 0.6, "recurrence": 0.7, "capability_fit": 0.5, "contactability": 0.6, "budget_plausibility": 0.45, "reply_rate": 0.18, "sale_rate": 0.07, "differentiation": 0.5, "risk": 0.15}
     },
     {
-      "id": "creative_assets_auto_detailing",
-      "name": "Kit de campanha para estética automotiva",
-      "buyer_segment": "Estética automotiva e detalhamento independente",
-      "offer_angle": "Peças que mostram serviços reais, diferenciais verificáveis e pedido de orçamento, usando imagens autorizadas do próprio negócio quando existirem.",
-      "customer_problem": "O negócio precisa comunicar o serviço e a qualidade do acabamento sem recorrer a fotos genéricas que não representam o trabalho entregue.",
-      "required_capabilities": [
-        "visual_design",
-        "canva_ai_or_equivalent",
-        "commercial_copywriting",
-        "brand_research"
-      ],
-      "capability_test": "Criar uma peça demonstrativa contextual, com fatos de amostra identificados, e revisar hierarquia/legibilidade/artefatos.",
-      "signals_to_verify": [
-        "serviços de detalhamento claramente listados",
-        "portfólio público de trabalhos próprios ou autorização para usar imagens",
-        "publicações inconsistentes ou CTA ausente",
-        "forma pública de solicitar orçamento"
-      ],
-      "search_queries": [
-        "estética automotiva independente Instagram detalhamento orçamento WhatsApp Brasil",
-        "detalhamento automotivo perfil comercial polimento vitrificação serviços Instagram",
-        "estética automotiva fotos de trabalhos próprios agendamento orçamento"
-      ],
-      "visual_direction": {
-        "style": "fotografia automotiva comercial realista, enquadramento preciso, reflexos fisicamente plausíveis e foco no acabamento",
-        "palette": [
-          "cores reais da marca",
-          "neutros frios ou quentes coerentes com a oficina",
-          "um único acento de destaque"
-        ],
-        "subject_examples": [
-          "detalhe de polimento em painel de carro real",
-          "reflexo natural na pintura automotiva",
-          "profissional aplicando produto de acabamento em ambiente real"
-        ],
-        "avoid": [
-          "reflexos impossíveis",
-          "carros deformados",
-          "resultados antes/depois não comprovados",
-          "luzes neon gratuitas"
-        ]
-      },
-      "aliases": [
-        "estética automotiva",
-        "detalhamento automotivo",
-        "car detailing",
-        "lava-jato",
-        "lavagem automotiva",
-        "polimento automotivo"
-      ],
-      "prior": {
-        "observed_need": 0.67,
-        "recurrence": 0.72,
-        "capability_fit": 0.5,
-        "contactability": 0.72,
-        "budget_plausibility": 0.68,
-        "reply_rate": 0.19,
-        "sale_rate": 0.09,
-        "differentiation": 0.73,
-        "risk": 0.08
-      }
+      "id": "auto_detailing",
+      "name": "Independent automotive detailing",
+      "offer_angle": "Communicate verified services using authorized real work evidence.",
+      "customer_problem": "Generic imagery does not represent the actual service.",
+      "signals_to_verify": ["real services", "authorized portfolio", "public quote route"],
+      "search_queries": ["independent auto detailing public services quote"],
+      "required_capabilities": ["visual_design", "brand_research"],
+      "prior": {"observed_need": 0.6, "recurrence": 0.6, "capability_fit": 0.5, "contactability": 0.6, "budget_plausibility": 0.6, "reply_rate": 0.18, "sale_rate": 0.08, "differentiation": 0.6, "risk": 0.1}
     }
-  ]
+  ],
+  "recording": {
+    "store_public_url_and_date": true,
+    "store_observed_fact_separately_from_inference": true,
+    "never_store_unnecessary_personal_data": true,
+    "qualified_lead_requires_need_fit_and_permitted_contact": true
+  }
 }

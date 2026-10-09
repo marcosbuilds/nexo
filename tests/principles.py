@@ -52,10 +52,10 @@ def test_runtime_store_no_longer_injects_static_generic_market_demand(tmp_path):
 def test_art_direction_matches_air_conditioning_category_not_barber_default():
     brief = build_design_brief({
         'business': {'name': 'Clima Teste', 'category': 'Empresa de ar-condicionado', 'profile_url': 'https://example.com'},
-        'main_subject': 'técnico inspecionando unidade split',
+        'main_subject': 'technician inspecting a split unit',
         'offer': 'limpeza de ar-condicionado',
         'headline': 'Ar mais limpo',
-        'cta': 'Peça um orçamento',
+        'cta': 'Request a quote',
     })
     assert brief['niche_id'] == 'home_services'
     assert 'barbeiro' not in brief['magic_media_element_prompt'].lower()
@@ -64,13 +64,13 @@ def test_art_direction_matches_air_conditioning_category_not_barber_default():
 
 def test_unknown_business_category_gets_context_specific_style_and_url_is_not_brand_observation():
     brief = build_design_brief({
-        'business': {'name': 'Clínica Vet Teste', 'category': 'Clínica veterinária', 'profile_url': 'https://example.com'},
-        'offer': 'consulta veterinária', 'headline': 'Agende a consulta', 'cta': 'Fale com a clínica',
+        'business': {'name': 'Test Veterinary Clinic', 'category': 'Veterinary clinic', 'profile_url': 'https://example.com'},
+        'offer': 'veterinary consultation', 'headline': 'Book a consultation', 'cta': 'Contact the clinic',
     })
     assert brief['niche_id'] == 'context_specific'
     assert brief['brand_observation_status'] == 'not_observed_url_is_reference_only'
     assert brief['publish_ready'] is False
-    assert any('identidade visual observada' in item for item in brief['facts_to_verify_before_publish'])
+    assert any('observed visual identity' in item for item in brief['facts_to_verify_before_publish'])
 
 
 def test_transparent_cutout_prompt_does_not_conflict_with_text_negative_space():
@@ -81,15 +81,15 @@ def test_transparent_cutout_prompt_does_not_conflict_with_text_negative_space():
         'main_subject': 'aparelho split inverter branco completo',
     })
     prompt = brief['magic_media_element_prompt'].lower()
-    assert 'fundo genuinamente transparente' in prompt
-    assert 'sem necessidade de abrir espaço para texto dentro do objeto' in prompt
+    assert 'genuinely transparent' in prompt
+    assert 'no need to reserve text space inside the object' in prompt
 
 
 def test_whatsapp_limits_and_compatibility_gate_are_consistent():
     policy = json.loads((ROOT / 'config/communication.json').read_text(encoding='utf-8'))
     limit = policy['message_packaging']['channel_defaults']['whatsapp']['max_chars_hard_limit']
     assert limit == 260
-    draft = 'A primeira parte explica o resultado que podemos entregar. A segunda parte delimita o escopo e o que está incluído. A terceira parte pede apenas o próximo passo para continuar.'
+    draft = 'The first part explains the result we can deliver. The second part defines the scope and what is included. The third part asks only for the next step to continue.'
     direct = communication_gate({'response_needed': True, 'draft': draft, 'channel': 'whatsapp'})
     compat = conversation_gate({'response_needed': True, 'draft': draft, 'channel': 'whatsapp'})
     assert direct['decision'] == compat['decision'] == 'SEND'
@@ -107,7 +107,7 @@ def test_market_learning_records_research_and_capability_evidence():
         record_event(conn, {
             'niche_id': 'python_workflow_automation', 'event_type': 'research_cycle',
             'external_ref': 'test:python:query-1',
-            'evidence': {'reason': 'Pesquisa concluída; fontes revisadas.', 'source_urls': ['https://example.org/source-a', 'https://example.org/source-b'], 'source_count': 2, 'qualified_count': 1},
+            'evidence': {'reason': 'Research completed; sources reviewed.', 'source_urls': ['https://example.org/source-a', 'https://example.org/source-b'], 'source_count': 2, 'qualified_count': 1},
         })
         result = record_event(conn, {
             'niche_id': 'python_workflow_automation', 'event_type': 'capability_tested',
@@ -135,7 +135,7 @@ def test_initial_scan_winner_requires_both_buyer_and_capability_evidence():
             record_event(conn, {
                 'niche_id': target, 'event_type': 'qualified_lead',
                 'external_ref': f'test:lead:{index}',
-                'evidence': {'observed_need': 0.8, 'contactability': 0.8, 'contact_channel_observed': 'formulário comercial público', 'source_urls': [f'https://example.org/business/{index}'], 'reason': 'public evidence verified'},
+            'evidence': {'observed_need': 0.8, 'contactability': 0.8, 'contact_channel_observed': 'public commercial form', 'source_urls': [f'https://example.org/business/{index}'], 'reason': 'public evidence verified'},
             })
         midway = market_snapshot(conn)
         assert midway['phase'] == 'initial_scan'

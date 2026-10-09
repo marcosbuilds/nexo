@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "purpose": "natural_contextual_persuasive_communication",
   "principles": {
     "simple_language_first": true,
@@ -69,7 +69,7 @@
         ],
         "max_chars_per_bubble": 260,
         "max_chars_hard_limit": 260,
-        "notes": "Use poucas bolhas com sentido completo; se não couber em três, reescreva mais curto em vez de cortar frases ou despejar tudo numa bolha."
+        "notes": "Use a few complete bubbles; if it does not fit in three, rewrite shorter instead of cutting sentences or cramming everything into one bubble."
       }
     },
     "adapt_to_incoming_message": true,
@@ -248,7 +248,7 @@
     ],
     "hard_post_guard": "tools/humanize.py",
     "stock_acknowledgments_to_avoid": [
-      "ótimo",
+      "great",
       "perfeito",
       "entendi"
     ],
@@ -296,7 +296,7 @@
     "one_turn_one_goal": true,
     "prefer_short_wait_for_customer_signal_after_clear_question": true
   },
-  "behavioral_revision": "0.2.0",
+  "behavioral_revision": "0.3.0",
   "behavioral_engine": {
     "plan_before_text": true,
     "silence_valid": true,

@@ -16,7 +16,7 @@ def classify(error_code='', message='', kind=''):
     if any(x in text for x in ('401','expired','session expired','unauthorized')): return 'AUTH_EXPIRED'
     if any(x in text for x in ('403','forbidden','permission denied')): return 'PERMISSION_DENIED'
     if any(x in text for x in ('captcha','otp','manual verification')): return 'PLATFORM_MANUAL_INTERVENTION'
-    if any(x in text for x in ('view once','visualização única')): return 'VIEW_ONCE_INACCESSIBLE'
+    if any(x in text.lower() for x in ('view once',)): return 'VIEW_ONCE_INACCESSIBLE'
     if any(x in text for x in ('audio','transcrib') and 'fail' in text): return 'MEDIA_INACCESSIBLE'
     if any(x in text for x in ('duplicate','already sent','already exists')): return 'DUPLICATE_RISK'
     if any(x in text for x in ('stale','outdated','element not found','state changed')): return 'STALE_STATE'

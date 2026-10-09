@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,6 +9,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from index import build  # noqa: E402
 from retrieve import retrieve  # noqa: E402
+from package import build_bundle  # noqa: E402
+from vendor.humanizer import rewrite_brief, validate_rewrite  # noqa: E402
 
 
 def test_knowledge_records_are_structured_and_source_backed():
@@ -35,7 +38,28 @@ def test_fts5_retrieval_returns_relevant_lesson_and_compact_context(tmp_path):
 
 
 def test_humanizer_surface_contains_runtime_only_files():
-    allowed = {"__init__.py", "engine.py", "LICENSE"}
+    allowed = {"__init__.py", "engine.py", "LICENSE", "contract.json"}
     files = {path.name for path in (ROOT / "vendor/humanizer").iterdir() if path.is_file()}
     assert files == allowed
     assert not any(path.name in {"README.md", "SKILL.md", "CHANGELOG.md", "AGENTS.md"} for path in (ROOT / "vendor/humanizer").rglob("*"))
+
+
+def test_runtime_bundle_is_external_release_material_only(tmp_path):
+    bundle = build_bundle(str(tmp_path / "worker-test.zip"))
+    with zipfile.ZipFile(bundle) as archive:
+        names = set(archive.namelist())
+        assert "docs/core.md" in names
+        assert "knowledge/rules.jsonl" in names
+        assert not any(name.startswith(prefix) for prefix in ("tests/", "reports/", "memory/", "release/", "docs/reference/") for name in names)
+        content = b"\n".join(archive.read(name) for name in names if not name.endswith(".pyc"))
+        assert b"Nexo" not in content
+        assert b"Autonomia" not in content
+        assert b"D:\\Project" not in content
+
+
+def test_humanizer_preserves_protected_spans_and_supports_practical_modes():
+    brief = rewrite_brief("Send https://example.org/report by 2026-10-09.", mode="pasted", channel="chat")
+    assert brief["mode"] == "pasted"
+    assert "https://example.org/report" in brief["protected_spans"]
+    checked = validate_rewrite(brief["input"], "Send https://example.org/report by 2026-10-09.")
+    assert checked["passes"] is True

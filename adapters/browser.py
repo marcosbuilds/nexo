@@ -35,7 +35,7 @@ class PlaywrightBrowser:
         try:
             from playwright.sync_api import sync_playwright
         except ImportError as exc:
-            raise RuntimeError("Playwright não está instalado. Instale o extra de navegador do projeto.") from exc
+            raise RuntimeError("Browser capability unavailable: Playwright cannot be imported.") from exc
         self._playwright = sync_playwright().start()
         self._context = self._playwright.chromium.launch_persistent_context(
             self.profile_dir,
@@ -83,7 +83,7 @@ def classify_manual_intervention(page_text: str, url: str = "") -> dict[str, Any
     text = (page_text or "").lower()
     signals = {
         "captcha": ["captcha", "recaptcha", "hcaptcha", "verify you are human"],
-        "otp": ["verification code", "código de verificação", "one-time code", "otp"],
+        "otp": ["verification code", "one-time code", "otp"],
         "identity": ["identity verification", "verify your identity", "document verification", "verifique sua identidade"],
         "security": ["suspicious activity", "security check", "atividade suspeita"],
     }

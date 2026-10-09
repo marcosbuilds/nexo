@@ -1,0 +1,41 @@
+{
+  "purpose": "practical_humanization_without_fact_mutation",
+  "modes": ["pasted", "file", "embedded"],
+  "pipeline": [
+    "identify_intent_and_voice",
+    "protect_facts_and_technical_spans",
+    "detect_artificial_patterns",
+    "rewrite_structure_and_rhythm",
+    "restore_protected_spans",
+    "run_factual_and_style_review"
+  ],
+  "preserve": [
+    "meaning", "supported_claims", "names", "numbers", "dates", "links",
+    "quoted_text", "code", "commands", "identifiers", "required_terms",
+    "language_intent", "speaker_voice"
+  ],
+  "remove_or_reduce": [
+    "empty_acknowledgements", "generic_praise", "corporate_filler",
+    "chatbot_closings", "repeated_openings", "question_stacking",
+    "template_transitions", "forced_triples", "artificial_symmetry",
+    "overexplaining", "unearned_certainty", "invented_emotion",
+    "automatic_call_to_action", "unnecessary_disclaimers"
+  ],
+  "rewrite_rules": [
+    "rewrite structure before swapping synonyms",
+    "keep the smallest useful amount of context",
+    "match the channel, relationship, and speaker rhythm",
+    "use concrete verbs and specific nouns",
+    "vary sentence length only when it improves natural rhythm",
+    "preserve the original language unless a translation is requested",
+    "never add a fact, promise, reason, or sentiment not supported by input"
+  ],
+  "final_gate": [
+    "facts_unchanged",
+    "protected_spans_unchanged",
+    "intent_unchanged",
+    "no_artificial_residue",
+    "no_unrequested_sales_pressure",
+    "fits_channel_limits"
+  ]
+}

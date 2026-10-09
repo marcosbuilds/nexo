@@ -57,7 +57,7 @@ def build(force: bool = False) -> dict[str, Any]:
         return previous
 
     packet = {
-        "version": "0.2.0",
+        "version": "0.3.0",
         "purpose": "compact_decision_context",
         "source_of_truth": "docs/core.md",
         "foundation_reference": "docs/foundations.md",

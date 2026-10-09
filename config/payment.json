@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "purpose": "payment_receiving_readiness_and_safe_customer_checkout",
   "discovery": {
     "inspect_logged_in_web_sessions": true,

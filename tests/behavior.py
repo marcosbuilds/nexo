@@ -44,7 +44,7 @@ def test_price_brain_decides_without_hourly_floor():
 
 
 def test_artificial_ack_is_semantically_blocked():
-    out = score_draft('Entendi. Posso ajudar com isso.')
+    out = score_draft('Understood. I can help with that.')
     assert not out['passes']
     assert 'stock_acknowledgement' in out['problems']
 

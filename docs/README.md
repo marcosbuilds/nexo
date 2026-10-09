@@ -1,31 +1,27 @@
-# Documentação do Nexo
+# Documentation map
 
-## Ativo
+The active runtime contract is intentionally small. The worker loads the core
+and context packet once per cycle, then retrieves only decision-relevant
+knowledge records. Deleted historical playbooks are not alternate policy.
 
-- [core.md](core.md): único núcleo normativo geral.
-- [context.md](context.md): pacote curto carregado por ciclo.
-- [foundations.md](foundations.md): pesquisa e fundamentos usados sob demanda.
+- [`core.md`](core.md): authoritative operating behavior;
+- [`context.md`](context.md): compact per-cycle packet and loading policy;
+- [`foundations.md`](foundations.md): rationale and method selection;
+- [`../knowledge/`](../knowledge): structured rules, methods, lessons, and
+  source provenance.
 
-## Referência sob demanda
+Developer-only material stays in the repository surface and is excluded by the
+runtime packaging allowlist. It must never be added to the runtime merely to
+explain installation, release, testing, or repository maintenance.
 
-`reference/` contém playbooks de canal, domínio e operação. Eles detalham uma
-decisão específica e não substituem o núcleo.
+When a rule conflicts with a lower-level note, use this precedence:
 
-## Histórico
+1. executable safety and authorization gates;
+2. `core.md`;
+3. current configuration;
+4. retrieved knowledge with evidence;
+5. a local lesson scoped to the same type of situation.
 
-`legacy/` contém documentos das arquiteturas 2.x. Eles podem explicar decisões
-anteriores, mas não são instruções do runtime. O plano extenso foi retirado do
-fluxo operacional justamente para não consumir contexto nem reintroduzir regras
-contraditórias.
-
-## Regra de precedência
-
-1. limites executáveis e estado real;
-2. `config/identity.json` e `docs/core.md`;
-3. `docs/context.md`;
-4. política específica necessária para a operação;
-5. fundamentos e playbooks sob demanda;
-6. histórico apenas para entender uma migração.
-
-Quando duas fontes discordarem, não concilie por texto: registre o conflito,
-aplique a fonte superior e remova ou arquive a fonte inferior.
+Never resolve a conflict by loading every document. Record the conflict,
+choose the smallest safe route, and update the source contract in a deliberate
+release.

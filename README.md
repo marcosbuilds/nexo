@@ -1,108 +1,89 @@
 # Nexo
 
-Nexo é o nome público deste repositório e do software de origem. O runtime
-instalado não usa esse nome como identidade externa: ele carrega o nome do
-proprietário ou da empresa autorizado em `memory/owner.json`.
+Nexo is the public source repository for a neutral autonomous digital worker.
+The public project name is not an external persona. The installed runtime uses
+only the authorized owner or company identity available in its local profile or
+connected accounts.
 
-## O que mudou nesta linha
+## Download the ready-to-use runtime
 
-- núcleo comportamental curto, em inglês, carregado uma vez por ciclo;
-- conhecimento separado em regras, lições, métodos e fontes JSONL;
-- busca local FTS5 com recuperação top-k e proveniência;
-- lições para permissões repetidas, contexto misturado, falhas sem recibo,
-  pesquisa sem decisão, follow-up sem sinal, identidade e ruído visual;
-- humanizer reduzido ao runtime determinístico, sem README, SKILL, changelog ou
-  comandos de instalação no pacote instalado;
-- zip de runtime separado do repositório público, sem banco operacional, perfil
-  privado ou identidade do software.
+The runtime is distributed as a GitHub Release asset. Do not use a source-tree
+archive as the runtime package.
 
-## Validar a árvore pública
+1. Download [worker-0.2.1.zip from the v0.3.0 release](https://github.com/marcosbuilds/nexo/releases/download/v0.3.0/worker-0.2.1.zip).
+2. Extract it into any folder.
+3. Open the extracted folder as a project in Codex or Claude.
+4. Start a conversation in that project with:
+
+   > Start working in this project. Inspect the active operating core, restore
+   > the current state, choose the highest-value executable mission, and begin
+   > work. Do not ask for routine permission when connected access and the
+   > existing mandate already authorize the action. Verify every material
+   > result and record the next step.
+
+The extracted project contains the worker's executable code, operational
+configuration, compact decision core, structured knowledge, lessons, methods,
+source records, database schema, and the complete runtime Humanizer. It does
+not contain repository guidance, release instructions, tests, reports, private
+data, a prebuilt database, or the public project identity.
+
+## Runtime use
+
+The project can be driven by the AI conversation above. For a direct local
+smoke run, use:
+
+```powershell
+python tools/execute.py --once
+```
+
+For a continuous worker loop:
+
+```powershell
+python tools/execute.py --daemon
+```
+
+An executor or browser profile is used only when the authorized environment
+provides one through `WORKER_EXECUTOR_CMD` or `WORKER_BROWSER_PROFILE`. A
+missing connector is a recorded blocker, never a fabricated success.
+
+## Updating
+
+Download the next runtime ZIP from the repository's Releases page, extract it
+to a new folder, and keep the existing runtime database and owner profile with
+the active installation. Never replace local state blindly. Each release asset
+is audited so it contains only runtime material.
+
+## Source development
+
+The source tree is for maintainers. Its compact active contracts are:
+
+- [`docs/core.md`](docs/core.md): one operating contract;
+- [`docs/context.md`](docs/context.md): the per-cycle context packet;
+- [`docs/foundations.md`](docs/foundations.md): evidence-backed decision foundations;
+- [`knowledge/`](knowledge): retrievable rules, methods, lessons, and sources;
+- [`tools/package.py`](tools/package.py): runtime allowlist and ZIP audit;
+- [`manifest.json`](manifest.json): release metadata and gates.
+
+Run the local validation suite before proposing a release:
 
 ```powershell
 python -m pytest -q
 python -m compileall -q agents adapters core runtime tools
+python tools/package.py
 python tools/index.py --output runtime_data/knowledge.sqlite3
 python tools/retrieve.py --query "customer did not reply"
-python tools/package.py
-python tools/package.py --bundle
 python tools/audit.py
 python tools/legacy.py
 ```
 
-O índice e o banco operacional são locais e ignorados pelo Git. O zip atual é
-`release/worker-0.2.0.zip`.
+The external versioner must be invoked with the repository path, the software
+version, the worker version, a release message, and explicit push confirmation.
+It refuses unbounded version jumps, tracked ZIPs, failed tests, dirty release
+state, missing checksums, and an asset that was not uploaded to the GitHub
+Release.
 
-## Instalar e atualizar
+## License
 
-Gere o pacote e instale em uma pasta de runtime separada:
-
-```powershell
-python tools/package.py --bundle
-python tools/install.py `
-  --bundle release/worker-0.2.0.zip `
-  --target D:\Runtime\worker `
-  --owner-name "Nome do proprietário" `
-  --company-name "Nome da empresa"
-```
-
-O instalador não apaga `memory/owner.json`, `runtime_data/`, `.env` ou arquivos
-locais existentes. Sem os argumentos de identidade, preenche apenas um perfil
-local vazio a partir de `config/profile.json`; não invente dados.
-
-Para atualizar código e conhecimento sem substituir o banco ou o perfil:
-
-```powershell
-python tools/package.py --bundle
-python tools/update.py `
-  --bundle release/worker-0.2.0.zip `
-  --target D:\Runtime\worker
-```
-
-## Rodar no Codex ou Claude
-
-Depois da instalação, os dois podem executar a mesma pasta de runtime. O
-projeto não depende de um plugin de instalação nem carrega a documentação do
-repositório inteiro:
-
-```powershell
-cd D:\Runtime\worker
-python tools/index.py
-python tools/execute.py --once
-```
-
-Para ciclo contínuo, use `python tools/execute.py --daemon`. Conectores reais
-devem ser configurados no ambiente autorizado (`WORKER_DB`,
-`WORKER_EXECUTOR_CMD` e `WORKER_BROWSER_PROFILE` quando aplicável). A falta de
-um executor não é tratada como sucesso.
-
-## Arquitetura curta
-
-- `docs/core.md`: contrato comportamental ativo.
-- `docs/context.md`: pacote mínimo por ciclo.
-- `knowledge/*.jsonl`: regras, métodos e lições recuperáveis.
-- `knowledge/sources.json`: proveniência e claims de cada registro.
-- `tools/index.py` e `tools/retrieve.py`: índice e busca local.
-- `config/identity.json`: separação entre identidade externa autorizada e nome
-  público do software.
-- `tools/package.py`: auditoria e bundle limpo.
-- `D:\Project\tools\nexo-versioner\versioner.py`: gate externo de release.
-
-## Release
-
-O versionador externo só libera uma versão após testes, compilação, auditorias,
-validação do schema e fontes, auditoria do zip, privacidade, working tree
-revisada, commit, tag nova e remote explícito:
-
-```powershell
-python D:\Project\tools\nexo-versioner\versioner.py audit `
-  --repo D:\Project\testes\autonomia
-
-python D:\Project\tools\nexo-versioner\versioner.py release `
-  --repo D:\Project\testes\autonomia `
-  --version 0.2.0 `
-  --message "Add structured knowledge retrieval and clean runtime bundle" `
-  --push --confirm
-```
-
-O repositório público contém fontes e instruções de desenvolvimento. O zip
-instalado contém apenas o que o worker precisa para atuar.
+The source repository is distributed under the restrictive terms in
+[`LICENSE.md`](LICENSE.md). The vendored Humanizer component retains its own
+MIT notice in `vendor/humanizer/LICENSE`.

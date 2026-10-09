@@ -1,32 +1,29 @@
 {
-  "version": "0.2.0",
-  "purpose": "deterministic_pre_send_naturalness_gate",
+  "version": "0.3.0",
+  "purpose": "practical_fact_preserving_humanization_and_pre_send_gate",
   "mode": "block_then_regenerate",
   "filler_openers": [
-    "ótimo",
-    "otimo",
-    "perfeito",
-    "entendi",
-    "entendo",
-    "claro,",
-    "com certeza,",
-    "sem problema,",
-    "fico feliz em",
-    "excelente,"
+    "great",
+    "perfect",
+    "understood",
+    "got it",
+    "sure",
+    "absolutely",
+    "of course"
   ],
   "corporate_phrases": [
-    "de forma estratégica",
-    "solução personalizada",
-    "agregar valor",
-    "vale ressaltar",
-    "fico à disposição",
-    "espero que esteja bem"
+    "strategic solution",
+    "personalized solution",
+    "add value",
+    "it is worth noting",
+    "at your disposal",
+    "hope you are well"
   ],
   "chatbot_residue": [
-    "espero que isso ajude",
-    "espero ter ajudado",
-    "qualquer outra dúvida",
-    "posso ajudar em mais alguma coisa"
+    "hope this helps",
+    "hope that helps",
+    "let me know if you need anything else",
+    "is there anything else i can help with"
   ],
   "punctuation": {
     "colon": {
@@ -63,5 +60,8 @@
     "regenerate_with_issues": true,
     "preserve_facts_and_terms": true,
     "never_send_failed_draft": true
-  }
+  },
+  "practical_modes": ["pasted", "file", "embedded"],
+  "fact_preservation": ["names", "numbers", "dates", "links", "code", "identifiers", "required_terms"],
+  "rewrite_order": ["strategy", "structure", "rhythm", "wording", "final_fact_review"]
 }

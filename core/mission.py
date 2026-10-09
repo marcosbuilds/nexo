@@ -89,14 +89,14 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     for job in active_jobs[:8]:
         missions.append(Mission(
-            title=f"Entregar/avançar trabalho #{job.get('id', '?')}",
-            objective="Produzir o próximo resultado verificável do trabalho aceito.",
+            title=f"Deliver or advance job #{job.get('id', '?')}",
+            objective="Produce the next verifiable result of accepted work.",
             economic_value=float(job.get("value", 0) or 0),
             probability_of_success=clamp(float(job.get("execution_confidence", 0.8))),
             strategic_value=0.8,
             expected_minutes=float(job.get("next_minutes", 45) or 45),
             deadline_at=job.get("deadline"),
-            success_condition="resultado do escopo atual verificado",
+            success_condition="current scope result verified",
             next_action="execute_active_job",
             current_state="active_job",
             metadata={"job_id": job.get("id")},
@@ -104,8 +104,8 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     for item in pending[:8]:
         missions.append(Mission(
-            title=f"Verificar consequência: {item.get('label', 'ação externa')}",
-            objective="Confirmar o efeito real de uma ação já executada antes de assumir sucesso.",
+            title=f"Verify consequence: {item.get('label', 'external action')}",
+            objective="Confirm the real effect of an executed action before assuming success.",
             economic_value=float(item.get("economic_value", 20) or 20),
             probability_of_success=0.9,
             strategic_value=0.7,
@@ -118,8 +118,8 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     for item in conversations[:10]:
         missions.append(Mission(
-            title=f"Avançar conversa: {item.get('name', 'contato')}",
-            objective=item.get("objective") or "Levar a conversa ao menor próximo estado útil, inclusive decidir não responder.",
+            title=f"Advance conversation: {item.get('name', 'contact')}",
+            objective=item.get("objective") or "Move the conversation to the smallest useful next state, including choosing silence.",
             economic_value=float(item.get("economic_value", 0) or 0),
             probability_of_success=clamp(float(item.get("reply_probability", 0.5))),
             strategic_value=clamp(float(item.get("strategic_value", 0.5))),
@@ -133,8 +133,8 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     for item in opportunities[:10]:
         missions.append(Mission(
-            title=f"Avaliar oportunidade: {item.get('title', 'oportunidade')}",
-            objective="Aplicar a menor rota válida para converter a oportunidade em trabalho real.",
+            title=f"Evaluate opportunity: {item.get('title', 'opportunity')}",
+            objective="Use the smallest valid route to turn the opportunity into real work.",
             economic_value=float(item.get("value", item.get("budget", 0)) or 0),
             probability_of_success=clamp(float(item.get("close_probability", 0.25))),
             strategic_value=clamp(float(item.get("strategic_value", 0.5))),
@@ -149,8 +149,8 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     for item in demand[:8]:
         missions.append(Mission(
-            title=f"Encontrar demanda: {item.get('segment', 'mercado')}",
-            objective="Pesquisar demanda legítima e criar oportunidades acionáveis, não apenas produzir atividade.",
+            title=f"Find demand: {item.get('segment', 'market')}",
+            objective="Research legitimate demand and create actionable opportunities, not activity for its own sake.",
             economic_value=float(item.get("potential_value", 100) or 100),
             probability_of_success=clamp(float(item.get("probability", 0.15))),
             strategic_value=0.6,
@@ -165,25 +165,25 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
                 "hypothesis": item.get("hypothesis"),
                 "niche_id": item.get("niche_id"),
                 "research_mode": item.get("research_mode", "general_demand_discovery"),
-                "queries": item.get("queries") or ["demanda real por serviços contratáveis", "empresas com necessidade observável", "opções de serviço com evidência de orçamento"],
+                "queries": item.get("queries") or ["real demand for contractable services", "businesses with observable needs", "service options with budget evidence"],
                 "signals_to_verify": item.get("signals_to_verify") or [],
-                "success_condition": item.get("success_condition") or "Retornar evidência pública concreta, URLs e dúvidas que ainda precisam ser verificadas.",
+                "success_condition": item.get("success_condition") or "Return concrete public evidence, URLs, and unresolved questions.",
                 "avoid_generic_market_claims": True,
                 "market_decision_space": "offer_x_buyer_segment",
                 "required_capabilities": item.get("required_capabilities") or [],
                 "capability_test": item.get("capability_test"),
                 "research_cycles_observed": int(item.get("research_cycles", 0) or 0),
                 "qualified_leads_observed": int(item.get("qualified_leads", 0) or 0),
-                "recording_tool": item.get("recording_tool") or "python tools/market.py --record-json '{...}'",
-                "research_recording_contract": "After each completed candidate/source batch record event_type=research_cycle with a stable external_ref, public URLs and concise factual evidence. Record event_type=qualified_lead only when the business, need, public evidence and allowed contact channel are verified. Never record a search result alone as a qualified lead.",
-                "capability_test_contract": "Before selling or promising the offer, run the defined low-cost sample test. Record event_type=capability_tested with a capability_fit score from 0 to 1 and evidence of the test output. Do not mark delivery capability as verified based on a prompt or assumption alone.",
+                "recording_tool": item.get("recording_tool") or "record a structured research event",
+                "research_recording_contract": "After each candidate/source batch record a stable external reference, public URLs, and concise factual evidence. Qualify a lead only when business, need, public evidence, and permitted contact are verified.",
+                "capability_test_contract": "Before selling or promising the offer, run the defined low-cost sample test and record the output and capability score. Never treat a prompt or assumption as delivery proof.",
             },
         ))
 
     for item in partnerships[:6]:
         missions.append(Mission(
-            title=f"Construir parceria: {item.get('name', 'parceiro')}",
-            objective="Testar uma parceria mutuamente útil que possa gerar demanda recorrente.",
+            title=f"Build partnership: {item.get('name', 'partner')}",
+            objective="Test a mutually useful partnership that could create recurring demand.",
             economic_value=float(item.get("potential_value", 250) or 250),
             probability_of_success=clamp(float(item.get("probability", 0.12))),
             strategic_value=0.9,
@@ -198,8 +198,8 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
 
     if not missions:
         missions.append(Mission(
-            title="Gerar nova frente de trabalho",
-            objective="Pesquisar a web e encontrar uma demanda compatível com as capacidades disponíveis.",
+            title="Generate a new work front",
+            objective="Research the web and find demand compatible with available capabilities.",
             economic_value=100,
             probability_of_success=0.12,
             strategic_value=0.7,
