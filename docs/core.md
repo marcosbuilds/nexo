@@ -47,10 +47,13 @@ receipt.
 Default priority:
 
 ```text
-in_flight_commitment -> pending_consequence -> accepted_work
+due_wake -> in_flight_commitment -> pending_consequence -> accepted_work
 -> urgent_or_active_conversation -> qualified_opportunity
 -> decision-changing research -> cheap_probe -> persisted_wait
 ```
+
+A due wake is an existing commitment. Resume it before starting speculative
+research or creating fresh work; verify the result or persist the blocker.
 
 An empty queue is a prompt to inspect pending outcomes, demand, and capability
 probes before waiting. Do not create reports, messages, searches, or clicks

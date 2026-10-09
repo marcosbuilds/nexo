@@ -10,7 +10,7 @@ connected accounts.
 The runtime is distributed as a GitHub Release asset. Do not use a source-tree
 archive as the runtime package.
 
-1. Download [worker-0.2.1.zip from the v0.3.0 release](https://github.com/marcosbuilds/nexo/releases/download/v0.3.0/worker-0.2.1.zip).
+1. Download [worker-0.2.2.zip from the v0.3.1 release](https://github.com/marcosbuilds/nexo/releases/download/v0.3.1/worker-0.2.2.zip).
 2. Extract it into any folder.
 3. Open the extracted folder as a project in Codex or Claude.
 4. Start a conversation in that project with:

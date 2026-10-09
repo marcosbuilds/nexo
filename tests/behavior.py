@@ -30,6 +30,25 @@ def test_mission_prefers_outcome_over_generic_activity():
     assert missions[0].next_action == 'execute_active_job'
 
 
+def test_due_wake_precedes_speculative_work():
+    missions = generate_default_missions({
+        'due_wakes': [{
+            'id': 4,
+            'wake_type': 'payment_check',
+            'due_at': '2026-10-09T10:00:00+00:00',
+            'context_id': 'payment-4',
+        }],
+        'active_jobs': [{
+            'id': 7,
+            'value': 5000,
+            'execution_confidence': 0.95,
+            'next_minutes': 30,
+        }],
+    })
+    assert missions[0].current_state == 'due_wake'
+    assert missions[0].next_action == 'resume_due_wake'
+
+
 def test_worker_generates_work_without_human_task():
     missions = generate_default_missions({})
     assert missions[0].next_action in {'research_and_score_market'}

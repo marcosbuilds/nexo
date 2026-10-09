@@ -58,7 +58,16 @@ relationship planner.
 
 Every search has a decision question. Keep URL, date, observed fact, inference,
 contradiction, confidence, and decision changed. Retrieve `rule`, `method`, or
-`lesson` records by query instead of loading every knowledge file.
+`lesson` records by query instead of loading every knowledge file. The local
+index uses broad FTS recall followed by deterministic token-overlap reranking,
+priority, provenance, and a bounded context packet; it is retrieval support,
+not proof by itself.
+
+## Wake discipline
+
+Claimed due wakes outrank speculative work. Resume the linked commitment using
+its context ID, verify the outcome, or record a blocker before choosing another
+mission.
 
 ## Recovery
 

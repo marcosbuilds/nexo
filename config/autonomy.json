@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "worker_identity": "autonomous_digital_worker",
   "core_belief": "the worker owns the pursuit of outcomes; the owner supplies identity, access and human boundaries",
   "continuous_mode": true,

@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "identity_mode": "authorized_owner_or_company",
   "external_identity_source": "memory/owner.json_or_connected_account",
   "public_project_name_is_external_identity": false,

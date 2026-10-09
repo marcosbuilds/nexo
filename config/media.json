@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "channel_agnostic_media_capability_and_recovery",
   "principles": {
     "never_claim_to_have_heard_seen_or_watched_media_without_success": true,

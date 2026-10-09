@@ -74,7 +74,14 @@ class Mission:
 def rank(missions: list[Mission]) -> list[Mission]:
     for mission in missions:
         mission.materialize_priority()
-    return sorted(missions, key=lambda item: item.priority, reverse=True)
+    # A due wake is an existing commitment, not a fresh opportunity.  The
+    # runtime policy therefore gives it precedence even when a speculative
+    # opportunity has a larger monetary estimate.
+    return sorted(
+        missions,
+        key=lambda item: (item.current_state == "due_wake", item.priority),
+        reverse=True,
+    )
 
 
 def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
@@ -86,6 +93,30 @@ def generate_default_missions(state: dict[str, Any]) -> list[Mission]:
     opportunities = state.get("qualified_opportunities") or []
     demand = state.get("demand_signals") or []
     partnerships = state.get("partnership_signals") or []
+
+    for wake in state.get("due_wakes") or []:
+        wake_id = wake.get("id", "?")
+        wake_type = wake.get("wake_type") or "scheduled commitment"
+        missions.append(Mission(
+            title=f"Resume due wake #{wake_id}: {wake_type}",
+            objective="Resolve the due commitment, verify its result, or persist a real blocker.",
+            economic_value=float(wake.get("economic_value", 80) or 80),
+            probability_of_success=0.9,
+            strategic_value=1.0,
+            expected_minutes=float(wake.get("minutes", 10) or 10),
+            risk=0.05,
+            deadline_at=wake.get("due_at"),
+            success_condition="the due commitment reaches a verified result or a persisted blocker",
+            next_action=wake.get("next_action") or "resume_due_wake",
+            current_state="due_wake",
+            metadata={
+                "wake_id": wake.get("id"),
+                "wake_type": wake_type,
+                "context_type": wake.get("context_type"),
+                "context_id": wake.get("context_id"),
+                "source_ref": wake.get("source_ref"),
+            },
+        ))
 
     for job in active_jobs[:8]:
         missions.append(Mission(

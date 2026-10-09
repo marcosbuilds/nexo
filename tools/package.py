@@ -72,10 +72,10 @@ def audit_runtime_surface() -> list[str]:
     errors: list[str] = []
     manifest = load_json("manifest.json")
     identity = load_json("config/identity.json")
-    if manifest.get("software_version") != "0.3.0":
-        errors.append("software version must be 0.3.0 for this release")
-    if manifest.get("worker_version") != "0.2.1":
-        errors.append("worker version must be 0.2.1 for this release")
+    if not manifest.get("software_version"):
+        errors.append("manifest software version is missing")
+    if not manifest.get("worker_version"):
+        errors.append("manifest worker version is missing")
     if manifest.get("version") != manifest.get("software_version"):
         errors.append("manifest version and software_version differ")
     if identity.get("version") != manifest.get("software_version"):

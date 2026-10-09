@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "strategy": "evidence_first_adaptive_market_validation",
   "purpose": "Compare offer and buyer hypotheses using observed need, capability evidence, permitted contact, economics, and delivery feedback.",
   "offer": {

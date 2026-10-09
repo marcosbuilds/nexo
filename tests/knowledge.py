@@ -33,8 +33,22 @@ def test_fts5_retrieval_returns_relevant_lesson_and_compact_context(tmp_path):
     ids = {item["id"] for item in found["results"]}
     assert "lesson.followup.no_signal" in ids
     assert "sources:" in found["context"]
+    assert found["retrieval"] == "fts5_recall_plus_deterministic_token_vector_rerank"
+    assert found["context_chars"] <= 4000
+    assert found["results"][0]["_retrieval"]["matched_terms"]
     with sqlite3.connect(db) as connection:
         assert connection.execute("SELECT count(*) FROM records").fetchone()[0] == result["records"]
+
+
+def test_retrieval_rejects_queries_made_only_of_stopwords(tmp_path):
+    db = tmp_path / "knowledge.sqlite3"
+    build(str(db))
+    try:
+        retrieve("the and with", output=str(db))
+    except ValueError as exc:
+        assert "searchable token" in str(exc)
+    else:
+        raise AssertionError("stopword-only query should be rejected")
 
 
 def test_humanizer_surface_contains_runtime_only_files():

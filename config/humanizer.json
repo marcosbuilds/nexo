@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "practical_fact_preserving_humanization_and_pre_send_gate",
   "mode": "block_then_regenerate",
   "filler_openers": [

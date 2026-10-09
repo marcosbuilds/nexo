@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "autonomy_mode": "continuous_decision_with_human_escalation",
   "worker_is_primary_actor": true,
   "owner_is_identity_authority_not_default_worker": true,
@@ -133,7 +133,7 @@
     "forbidden_for_authorized_routine_actions": true,
     "authorization_preflight": "tools/operate.py"
   },
-  "behavioral_revision": "0.3.0",
+  "behavioral_revision": "0.3.1",
   "execution_liveness": {
     "enabled": true,
     "canonical_guard": "tools/liveness.py",

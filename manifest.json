@@ -1,14 +1,14 @@
 {
   "project": "Nexo",
   "slug": "nexo",
-  "version": "0.3.0",
-  "software_version": "0.3.0",
-  "worker_version": "0.2.1",
-  "release_kind": "minor",
+  "version": "0.3.1",
+  "software_version": "0.3.1",
+  "worker_version": "0.2.2",
+  "release_kind": "patch",
   "versioning": "dual_semver_with_release_gates",
   "versioning_policy": {
-    "software_line": "monotonic; never rewrite a published tag; at most one minor step per release",
-    "worker_line": "monotonic; patch-sized behavioral changes require tests; no artificial version jumps",
+    "software_line": "monotonic; each release is exactly one patch step or one minor step with patch reset; never rewrite a published tag",
+    "worker_line": "monotonic; each release is exactly one patch step or one minor step with patch reset; behavioral changes require a changed test",
     "runtime_asset": "worker-{worker_version}.zip",
     "public_release": "v{software_version}"
   },

@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "agenda_awareness_and_durable_internal_wakeups",
   "sources": [
     "local_reminder_store",

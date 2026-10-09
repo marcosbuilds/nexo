@@ -9,5 +9,5 @@
     "identity_rules": "never impersonate or invent identity; use authorized owner account only",
     "permission_rule": "existing access grants operational scope; it does not override external platform restrictions"
   },
-  "version": "0.3.0"
+  "version": "0.3.1"
 }

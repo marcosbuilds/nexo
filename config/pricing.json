@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "grounded_commercial_pricing",
   "principle": "price_the_actual_scope_and_value; never invent a number just to close",
   "required_inputs": [

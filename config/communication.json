@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "natural_contextual_persuasive_communication",
   "principles": {
     "simple_language_first": true,
@@ -296,7 +296,7 @@
     "one_turn_one_goal": true,
     "prefer_short_wait_for_customer_signal_after_clear_question": true
   },
-  "behavioral_revision": "0.3.0",
+  "behavioral_revision": "0.3.1",
   "behavioral_engine": {
     "plan_before_text": true,
     "silence_valid": true,
