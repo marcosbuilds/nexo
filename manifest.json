@@ -1,13 +1,18 @@
 {
   "project": "Nexo",
   "slug": "nexo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "versioning": "semantic_versioning",
-  "versioning_reset": "The Nexo line starts at 0.1.0; Autonomia 2.x is historical only.",
+  "versioning_reset": "The public line starts at 0.2.0 after the runtime knowledge and bundle redesign.",
   "identity": "config/identity.json",
   "active_source_of_truth": "docs/core.md",
   "active_runtime_context": "docs/context.md",
   "active_foundations": "docs/foundations.md",
+  "knowledge_schema": "knowledge/schema.json",
+  "knowledge_sources": "knowledge/sources.json",
+  "knowledge_indexer": "tools/index.py",
+  "knowledge_retriever": "tools/retrieve.py",
+  "runtime_bundle": "release/worker-0.2.0.zip",
   "canonical_runtime_entrypoint": "tools/cycle.py",
   "active_execution_kernel": "tools/execute.py",
   "worker_profile": "memory/profile.json",
@@ -32,6 +37,9 @@
     "active_legacy_scan_passes",
     "no_personal_data_or_secrets_in_release",
     "manifest_paths_exist_and_no_legacy_source_is_active",
+    "knowledge_schema_and_sources_validate",
+    "runtime_bundle_audit_passes",
+    "bundle_contains_no_public_software_identity",
     "commit_message_is_present",
     "annotated_version_tag_is_new",
     "remote_is_explicit_before_push"
@@ -44,7 +52,9 @@
     "config/authorization.json",
     "config/runtime.json",
     "config/recovery.json",
-    "config/communication.json"
+    "config/communication.json",
+    "knowledge/schema.json",
+    "knowledge/sources.json"
   ],
   "policy_sources": {
     "authorization": "config/authorization.json",
@@ -56,9 +66,8 @@
   },
   "runtime_database": {
     "shipped": false,
-    "environment": "NEXO_DB",
-    "legacy_environment_fallback": "AUTONOMIA_DB",
-    "default": "runtime_data/nexo.sqlite3",
+    "environment": "WORKER_DB",
+    "default": "runtime_data/worker.sqlite3",
     "replace_existing_on_update": false
   }
 }

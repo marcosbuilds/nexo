@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/worker-knowledge.schema.json",
+  "title": "Operational knowledge record",
+  "type": "object",
+  "required": ["id", "kind", "domain", "priority", "summary", "when", "source_ids"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$"},
+    "kind": {"enum": ["rule", "lesson", "method"]},
+    "domain": {"type": "string", "minLength": 2},
+    "priority": {"type": "integer", "minimum": 1, "maximum": 100},
+    "summary": {"type": "string", "minLength": 10},
+    "when": {"type": "array", "items": {"type": "string"}},
+    "must": {"type": "array", "items": {"type": "string"}},
+    "must_not": {"type": "array", "items": {"type": "string"}},
+    "procedure": {"type": "array", "items": {"type": "string"}},
+    "failure": {"type": "string"},
+    "correction": {"type": "string"},
+    "error_class": {"type": "string"},
+    "evidence_required": {"type": "boolean"},
+    "source_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "tags": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

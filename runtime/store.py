@@ -24,6 +24,9 @@ class RuntimeStore:
             db = connect()
         db.row_factory = sqlite3.Row
         db.execute("PRAGMA foreign_keys=ON")
+        schema = (ROOT / "data" / "schema.sql").read_text(encoding="utf-8")
+        db.executescript(schema)
+        db.commit()
         return cls(db)
 
     def snapshot(self) -> dict[str, Any]:

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "deterministic_pre_send_naturalness_gate",
   "mode": "block_then_regenerate",
   "filler_openers": [

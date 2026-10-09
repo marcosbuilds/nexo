@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "policy": "Sources support decisions; they do not become unquestioned truth.",
+  "sources": [
+    {"id": "source.agent.react", "title": "Interleaved reasoning and acting", "url": "https://arxiv.org/abs/2210.03629", "type": "research", "claims": ["interleaving observations and actions helps update plans and handle exceptions"]},
+    {"id": "source.agent.reflexion", "title": "Verbal feedback memory for agents", "url": "https://arxiv.org/abs/2303.11366", "type": "research", "claims": ["compact feedback stored after an episode can guide later attempts"]},
+    {"id": "source.agent.rag", "title": "Retrieval augmented generation", "url": "https://arxiv.org/abs/2005.11401", "type": "research", "claims": ["explicit non-parametric memory can improve factual and specific generation"]},
+    {"id": "source.data.jsonschema", "title": "JSON Schema specification", "url": "https://json-schema.org/specification", "type": "standard", "claims": ["a schema can describe and validate structured data"]},
+    {"id": "source.data.fts5", "title": "SQLite FTS5", "url": "https://www.sqlite.org/fts5.html", "type": "official_documentation", "claims": ["local full-text search supports ranking with bm25 and weighted columns"]},
+    {"id": "source.search.essentials", "title": "Search essentials", "url": "https://developers.google.com/search/docs/essentials", "type": "official_documentation", "claims": ["helpful reliable people-first content and clear language support discoverability"]},
+    {"id": "source.search.people_first", "title": "People-first content guidance", "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content", "type": "official_documentation", "claims": ["content should serve an intended audience and demonstrate useful first-hand knowledge"]},
+    {"id": "source.sales.discovery", "title": "Consultative discovery question model", "url": "https://www.huthwaiteinternational.com/spin-methodology", "type": "method_reference", "claims": ["discovery can move from situation to problem, impact, and desired payoff", "questions should have a purpose and adapt to what is already known"]},
+    {"id": "source.customer.progress", "title": "Progress-oriented customer choice", "url": "https://www.christenseninstitute.org/theory/jobs-to-be-done/", "type": "theory_reference", "claims": ["choices are better understood by the functional, social, and emotional progress a person seeks"]},
+    {"id": "source.relationship.trust", "title": "Trust and commitment in relationship marketing", "url": "https://doi.org/10.1177/002224299405800302", "type": "research", "claims": ["trust and commitment are central mediators in durable relational exchange"]},
+    {"id": "source.research.user_needs", "title": "Evidence-based user needs", "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs", "type": "official_guidance", "claims": ["needs should be based on user research rather than assumptions"]},
+    {"id": "source.research.plan", "title": "Research planning by decision value", "url": "https://www.gov.uk/service-manual/user-research/plan-user-research-for-your-service", "type": "official_guidance", "claims": ["choose research activities that provide strong evidence for the least time, effort, and cost"]},
+    {"id": "source.design.visual", "title": "Visual design principles for usability", "url": "https://www.nngroup.com/articles/principles-visual-design/", "type": "design_reference", "claims": ["scale, hierarchy, balance, contrast, and grouping affect usability"]},
+    {"id": "source.design.hierarchy", "title": "Visual hierarchy and contrast", "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/", "type": "design_reference", "claims": ["scale and contrast can make hierarchy visible and direct attention"]},
+    {"id": "source.design.typography", "title": "Typography and visual communication", "url": "https://www.moma.org/collection/works/8840", "type": "museum_reference", "claims": ["type, space, image, and color can work together as a visual communication system"]},
+    {"id": "source.design.reduction", "title": "Reduction, abstraction, and memorable visual language", "url": "https://www.moma.org/calendar/exhibitions/1473", "type": "museum_reference", "claims": ["strong visual systems can use abstraction, color, and typography to communicate quickly"]}
+  ]
+}

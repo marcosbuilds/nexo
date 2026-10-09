@@ -57,7 +57,7 @@ def build(force: bool = False) -> dict[str, Any]:
         return previous
 
     packet = {
-        "version": "0.1.0",
+        "version": "0.2.0",
         "purpose": "compact_decision_context",
         "source_of_truth": "docs/core.md",
         "foundation_reference": "docs/foundations.md",
@@ -176,7 +176,7 @@ def main() -> int:
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:
-        print("Nexo runtime context carregado.")
+        print("Runtime context loaded.")
         for rule in result["non_negotiables"]:
             print(f"- {rule}")
     return 0

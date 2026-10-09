@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "continuous_demand_generation_when_execution_queue_is_empty",
   "core_rule": "empty_queue_means_find_or_create_legitimate_demand, not stop_working",
   "priority_order": [

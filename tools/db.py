@@ -11,11 +11,11 @@ from pathlib import Path
 import sqlite3
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_DB = ROOT / "runtime_data" / "nexo.sqlite3"
+DEFAULT_DB = ROOT / "runtime_data" / "worker.sqlite3"
 
 
 def database_path() -> Path:
-    raw = os.environ.get("NEXO_DB") or os.environ.get("AUTONOMIA_DB")
+    raw = os.environ.get("WORKER_DB")
     path = Path(raw).expanduser() if raw else DEFAULT_DB
     if not path.is_absolute():
         path = (Path.cwd() / path).resolve()

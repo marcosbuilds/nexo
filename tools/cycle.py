@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Canonical Autonomia 2.5 cycle: missions are first-class; gates are safety."""
+"""Canonical worker cycle: missions are first-class; gates are safety."""
 from __future__ import annotations
 import argparse,json,sys
 from pathlib import Path

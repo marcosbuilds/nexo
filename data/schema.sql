@@ -1175,7 +1175,7 @@ CREATE TABLE IF NOT EXISTS execution_commitments (
 CREATE INDEX IF NOT EXISTS idx_execution_commitments_status ON execution_commitments(status, updated_at);
 CREATE INDEX IF NOT EXISTS idx_execution_commitments_progress ON execution_commitments(no_progress_cycles, updated_at);
 
--- Autonomia 2.5: worker-owned missions, behavioral communication memory, runtime supervision
+-- Worker-owned missions, behavioral communication memory, runtime supervision
 CREATE TABLE IF NOT EXISTS missions (
   id INTEGER PRIMARY KEY,
   goal_id INTEGER,

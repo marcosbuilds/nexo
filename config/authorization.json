@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "mandate_scoped_autonomous_execution_without_micro_confirmation",
   "core_rule": "mandate_plus_verified_capability_plus_context_authorizes_execution_without_micro_confirmation",
   "connected_access_rule": "a functioning connected account is operational authority for routine actions inside that account scope",

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "generalized_error_treatment_and_recovery",
   "principle": "classify_once_recover_locally_record_evidence_learn_globally",
   "classes": {

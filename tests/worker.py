@@ -106,7 +106,7 @@ def test_context_packet_is_canonical_and_does_not_load_legacy_rulebooks(tmp_path
     # build() writes the normal cache, but this assertion only inspects the
     # returned packet and protects the source-selection contract.
     packet = build_context(force=True)
-    assert packet["version"] == "0.1.0"
+    assert packet["version"] == "0.2.0"
     assert packet["source_of_truth"] == "docs/core.md"
     assert packet["foundation_reference"] == "docs/foundations.md"
     assert "decision_contract" in packet

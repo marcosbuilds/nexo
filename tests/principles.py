@@ -245,8 +245,8 @@ def test_foundations_are_referenced_without_loading_the_full_research_file():
     principles = (ROOT / 'docs/foundations.md').read_text(encoding='utf-8')
     context = json.loads((ROOT / 'memory/cache.json').read_text(encoding='utf-8'))
     assert 'Jobs to Be Done' in principles
-    assert 'Fogg' in principles
-    assert 'Duplo Diamante' in principles
+    assert 'Retrieval-augmented generation' in principles
+    assert 'source IDs' in principles
     assert context.get('foundation_reference') == 'docs/foundations.md'
     assert 'docs/foundations.md' not in context.get('sources', {})
-    assert 'só a referência que ajuda' in principles or 'critério de uso' in principles
+    assert 'on-demand source' in principles

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "autonomy_mode": "continuous_decision_with_human_escalation",
   "worker_is_primary_actor": true,
   "owner_is_identity_authority_not_default_worker": true,
@@ -133,7 +133,7 @@
     "forbidden_for_authorized_routine_actions": true,
     "authorization_preflight": "tools/operate.py"
   },
-  "behavioral_revision": "0.1.0",
+  "behavioral_revision": "0.2.0",
   "execution_liveness": {
     "enabled": true,
     "canonical_guard": "tools/liveness.py",
@@ -159,9 +159,8 @@
   "database_runtime_policy": {
     "shipped_db": false,
     "schema_shipped": true,
-    "path_env": "NEXO_DB",
-    "legacy_path_env": "AUTONOMIA_DB",
-    "default_path": "runtime_data/nexo.sqlite3",
+    "path_env": "WORKER_DB",
+    "default_path": "runtime_data/worker.sqlite3",
     "never_replace_existing_runtime_db_on_code_update": true,
     "all_runtime_tools_use_canonical_db_helper": "tools/db.py"
   },
@@ -171,7 +170,10 @@
     "load_once_per_cycle": true,
     "do_not_reload_full_project": true,
     "retrieve_specific_detail_only_when_needed": true,
-    "foundation_reference": "docs/foundations.md"
+    "foundation_reference": "docs/foundations.md",
+    "knowledge_index": "runtime_data/knowledge.sqlite3",
+    "knowledge_loader": "tools/retrieve.py",
+    "knowledge_policy": "retrieve_top_k_by_decision_not_full_documents"
   },
   "empty_queue_behavior": {
     "never_end_just_because_queue_is_empty": true,

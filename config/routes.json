@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generalized consequence tracing templates. Examples are patterns, not platform-specific rules.",
   "event_classes": [
     {

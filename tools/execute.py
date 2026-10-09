@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Nexo runtime entrypoint with a durable worker loop."""
+"""Runtime entrypoint with a durable worker loop."""
 from __future__ import annotations
 import argparse, json, os, signal, time
 from datetime import datetime, timezone
@@ -16,7 +16,7 @@ def _stop(*_):
 
 
 def make_executor():
-    command=os.environ.get('NEXO_EXECUTOR_CMD') or os.environ.get('AUTONOMIA_EXECUTOR_CMD')
+    command=os.environ.get('WORKER_EXECUTOR_CMD')
     if command:
         import subprocess
         def execute_command(mission):
@@ -28,14 +28,14 @@ def make_executor():
             return ActionReceipt(data.get('action',mission.get('next_action') or 'unknown'),data.get('status','UNKNOWN'),data.get('result') or {},data.get('evidence_ref'),data.get('blocker'))
         return execute_command
 
-    profile=os.environ.get('NEXO_BROWSER_PROFILE') or os.environ.get('AUTONOMIA_BROWSER_PROFILE')
+    profile=os.environ.get('WORKER_BROWSER_PROFILE')
     if profile:
         def execute_browser(mission):
             try:
                 from adapters.browser import PlaywrightBrowser
                 from adapters.operate import BrowserOperator
-                from adapters.browser_research import BrowserResearcher
-                browser=PlaywrightBrowser(profile,headless=(os.environ.get('NEXO_BROWSER_HEADLESS') or os.environ.get('AUTONOMIA_BROWSER_HEADLESS','0'))=='1')
+                from adapters.research import BrowserResearcher
+                browser=PlaywrightBrowser(profile,headless=os.environ.get('WORKER_BROWSER_HEADLESS','0')=='1')
                 browser.start()
                 try:
                     meta=mission.get('metadata') or {}

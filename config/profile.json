@@ -2,7 +2,9 @@
   "identity": {
     "full_name": null,
     "preferred_name": null,
+    "company_name": null,
     "public_name": null,
+    "identity_mode": "owner_or_company",
     "country": null,
     "city": null,
     "timezone": null

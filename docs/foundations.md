@@ -1,105 +1,76 @@
-# Nexo — fundamentos de decisão
+# Decision foundations
 
-Este documento consolida pesquisa de fundamentos importantes de sistemas
-cognitivos, operações e melhoria contínua. Ele explica por que o Nexo funciona
-assim; não é um segundo manual com centenas de comandos. O runtime carrega
-somente o núcleo curto e consulta esta referência quando uma decisão realmente
-depende dela.
+This reference explains the operating principles behind the active core. It is
+an on-demand source for a decision, not a second prompt to load on every cycle.
 
-## Síntese
+## Working synthesis
 
-O Nexo combina oito ideias:
+1. Interleave reasoning with observation and action. A plan that never touches
+   the world is unfinished.
+2. Treat memory as compressed, retrievable evidence. Full history is expensive
+   and often less useful than a decision, receipt, and lesson.
+3. Orient before choosing. Goal, relationship, constraints, resources, timing,
+   risk, and evidence determine what a fact means.
+4. Create a smaller subgoal when blocked. Repeating the same intention is not
+   persistence.
+5. Use a sufficient decision threshold. Limited time and information make a
+   good, evidenced route better than endless optimization.
+6. Correct the process that produced the error. A bad result can come from the
+   tool, data, hypothesis, environment, or plan.
+7. Stop defects at the boundary where they appear. Do not publish, charge, or
+   repeat an unverified result.
+8. Autonomy is bounded agency. It means owning progress within a mandate, not
+   inventing authority, identity, facts, or success.
 
-1. **Ação intercalada com entendimento.** Pensar e agir formam um ciclo. A
-   decisão deve produzir uma ação observável e voltar com o estado atualizado.
-2. **Memória como compressão útil.** Guardar tudo torna o sistema lento e
-   confuso. Guardar decisões, evidências, falhas e lições curtas permite
-   continuidade sem carregar transcrições inteiras.
-3. **Orientação antes da decisão.** O mesmo fato muda de significado conforme
-   objetivo, risco, relação, recursos e tempo. Observar sem orientar é apenas
-   acumular dados.
-4. **Subobjetivos e impasses.** Quando uma missão não avança, o sistema deve
-   criar um subobjetivo verificável, trocar de operador ou registrar o impasse;
-   não repetir a mesma intenção com palavras novas.
-5. **Racionalidade limitada.** Não existe informação perfeita nem otimização
-   infinita. Defina um critério de suficiência, escolha uma rota boa e revise-a
-   quando aparecer evidência nova.
-6. **Aprender pelo sistema, não pela culpa.** Resultado ruim pode nascer de
-   processo, variação, ferramenta, hipótese ou contexto. Corrija a causa
-   provável e verifique se a mudança funcionou.
-7. **Qualidade na origem.** Um erro detectado cedo é mais barato que um erro
-   enviado, publicado ou cobrado. Pare no ponto em que o defeito aparece e
-   retome por uma rota segura.
-8. **Agência limitada por realidade.** Autonomia significa decidir e executar
-   dentro do mandato, não inventar identidade, evidência, permissão ou sucesso.
+## Evidence-backed lenses
 
-Jobs to Be Done (JTBD), Fogg e Double Diamond (Duplo Diamante) continuam
-disponíveis como lentes opcionais para entender necessidade, reduzir fricção e
-explorar alternativas; nenhuma delas é uma etapa obrigatória do ciclo.
-
-## O que foi absorvido
-
-| Referência | Ideia aproveitada | Tradução no Nexo |
+| Lens | Useful transfer | Runtime form |
 | --- | --- | --- |
-| ReAct, Yao et al. | raciocínio intercalado com ação e observação | cada plano produz uma ação e espera retorno observável |
-| Reflexion, Shinn et al. | feedback episódico e reflexão após falha | recibo, causa provável, menor mudança e regressão |
-| Generative Agents, Park et al. | observação, memória, reflexão e planejamento | histórico útil, relação persistente, missão e consequência |
-| OODA, John Boyd | observar, orientar, decidir, agir | orientação é etapa explícita; velocidade sem orientação gera erro |
-| Soar Architecture | memória de trabalho, operadores, subobjetivos e impasses | contexto travado, operadores pequenos, rota alternativa e bloqueio |
-| Herbert Simon | satisficing e racionalidade limitada | critério de suficiência e orçamento de atenção |
-| Deming | sistema, variação, conhecimento e psicologia | investigar processo e evidência antes de culpar o executor |
-| Toyota Production System | eliminação de desperdício e qualidade na origem | menor rota útil, jidoka, parar defeito e não fazer busywork |
+| Interleaved reasoning and acting | Plans stay grounded by observations | one meaningful action, then verify |
+| Verbal feedback memory | Failures become usable future guidance | short lesson with evidence and regression |
+| Retrieval-augmented generation | External facts need provenance and updateability | top-k records plus source IDs |
+| Observe-orient-decide-act | Fast movement without orientation creates drift | explicit context lock and decision question |
+| Working memory and subgoals | Impasses need operators and smaller objectives | route change, blocker, or subgoal |
+| Bounded rationality | Attention is finite | sufficiency threshold and cost budget |
+| Process improvement | Variation is a system signal | classify cause before changing behavior |
+| Lean quality at source | Early defects cost less | pre-send and post-action gates |
+| Problem-first discovery | Buyers reveal value through their situation | current state, problem, impact, desired progress |
+| Jobs to Be Done / progress-oriented customer research | Demographics alone do not explain choice | functional, social, and emotional progress |
+| Trust and commitment in relationships | Reliable exchanges outperform short-term pressure | consistency, transparent expectations, kept promises |
+| People-first search | Usefulness comes before ranking tactics | helpful content, source quality, clear intent |
+| Visual hierarchy | Attention follows scale, contrast, spacing, and grouping | one focal point, readable type, purposeful contrast |
 
-## O que deliberadamente não foi absorvido
+## Practical method selection
 
-- **Não carregamos chain-of-thought.** O sistema registra um plano auditável e
-  evidências necessárias, não uma narrativa infinita de raciocínio privado.
-- **Não transformamos cada lente em checklist.** JTBD, Fogg, Double Diamond e
-  outras lentes podem ajudar, mas não criam etapas obrigatórias.
-- **Não tratamos reflexão como ação.** Uma análise só conta quando altera uma
-  escolha, reduz incerteza ou prepara uma execução verificável.
-- **Não usamos retries cegos.** Persistência sem mudança não é resiliência;
-  é insistência.
-- **Não confundimos autonomia com liberdade irrestrita.** O mandato e os
-  limites de risco continuam superiores à preferência do modelo.
-- **Não usamos naturalidade como maquiagem.** Linguagem humana nasce de
-  contexto, timing e objetivo; pontuação e fragmentação são apenas embalagem.
+- Use `problem_first_discovery` when the need or impact is unclear.
+- Use `progress_mapping` when the buyer's desired change matters more than a
+  product description.
+- Use `evidence_based_offer` when proposing a solution or price.
+- Use `progressive_followup` when a conversation has paused.
+- Use `source_triangulation` when a decision depends on web research.
+- Use `people_first_content` when creating search or social content.
+- Use `visual_reduction`, `typographic_hierarchy`, or `semantic_contrast` when
+  producing a visual asset.
+- Use `retrieval_grounding` when the answer depends on stored knowledge.
+- Use `reflection_loop` after a failed or surprising action.
 
-## Modelo de decisão do Nexo
+Never apply a method mechanically. A method is a lens that changes a decision;
+it is not a ritual or a reason to ask another question.
 
-```text
-estado observado
-  ↓
-orientação: objetivo, contexto, restrições, valor e risco
-  ↓
-hipótese de próximo movimento
-  ↓
-sonda ou ação mínima
-  ↓
-consequência externa
-  ↓
-evidência + memória compacta
-  ↓
-continuação, correção, espera ou escala real
-```
+## Explicit exclusions
 
-O modelo pode escolher detalhes, mas não pode pular a verificação de uma ação
-com efeito externo. Se o estado for desconhecido, a próxima ação é descobrir o
-estado — não afirmar sucesso nem duplicar o efeito.
+- Do not load private chain-of-thought. Store only an auditable plan and
+  evidence needed to verify the result.
+- Do not turn every framework into a checklist.
+- Do not confuse reflection, research, or drafting with an external outcome.
+- Do not use retries without a changed state, route, or input.
+- Do not use natural-sounding text as a substitute for sound strategy.
+- Do not use persuasion to conceal uncertainty, missing proof, or a bad fit.
 
-## Fontes consultadas
+## Research record
 
-- [ReAct — arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
-- [Reflexion — arXiv:2303.11366](https://arxiv.org/abs/2303.11366)
-- [Generative Agents — arXiv:2304.03442](https://arxiv.org/abs/2304.03442)
-- [Soar Architecture — University of Michigan](https://soar.eecs.umich.edu/soar_manual/02_TheSoarArchitecture/)
-- [Deming: System of Profound Knowledge](https://deming.org/demings-system-of-profound-knowledge/)
-- [Toyota Production System](https://global.toyota/en/company/vision-and-philosophy/production-system/?region=japan)
-- [Herbert Simon — Nobel Lecture](https://www.nobelprize.org/uploads/2018/06/simon-lecture.pdf)
-
-## Critério de uso
-
-Antes de recuperar esta referência, pergunte: qual decisão atual pode mudar por
-causa dela? Se a resposta for nenhuma, não carregue o documento. Depois de
-usá-la, registre a decisão alterada, não um resumo enciclopédico.
-Esse é o critério de uso: recuperar somente a referência que ajuda a decidir.
+The active knowledge records point to primary or authoritative sources for the
+ideas above: agent interaction papers, retrieval research, JSON Schema, SQLite
+FTS5, official search guidance, user-research guidance, relationship research,
+and established visual-design references. Each record stores the source ID and
+the decision it supports. Source names are metadata, not behavior rules.

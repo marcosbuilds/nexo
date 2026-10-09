@@ -1,13 +1,15 @@
 {
-  "name": "Nexo",
-  "slug": "nexo",
-  "version": "0.1.0",
-  "meaning": "ligação entre contexto, memória, decisão e ação",
-  "identity_boundary": "O nome identifica o software. Não identifica a empresa em que ele opera nem o proprietário das contas.",
+  "version": "0.2.0",
+  "public_identity": null,
+  "identity_mode": "owner_or_company",
+  "identity_boundary": "External identity comes only from the authorized local owner or company profile.",
+  "software_name_is_external_identity": false,
   "owner_identity_source": "memory/owner.json",
   "owner_identity_is_runtime_data": true,
-  "repository_visibility": "private",
+  "repository_visibility": "public",
   "release_model": "semantic_versioning_with_release_gates",
   "active_source_of_truth": "docs/core.md",
-  "active_foundations": "docs/foundations.md"
+  "active_foundations": "docs/foundations.md",
+  "required_identity_fields": ["owner_name_or_company_name"],
+  "disclosure": "follow_platform_rules_when_automation_or_identity_disclosure_is_required"
 }

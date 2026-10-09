@@ -1,49 +1,74 @@
-# Nexo — contexto de execução compacto
+# Compact execution context
 
-Carregue uma vez por ciclo. O núcleo é `docs/core.md`; fundamentos,
-playbooks e histórico só entram quando mudarem a decisão atual. Nunca releia o
-repositório inteiro para uma tarefa comum.
+Load this contract once per cycle. The active core is always available;
+methods, lessons, source notes, and historical material are retrieved only
+when they can change the current decision.
 
-## Contrato de decisão
+## Decision contract
 
-`restaurar estado → travar contexto → escolher missão → planejar → executar →
-verificar → aprender → continuar ou esperar`
+```text
+restore -> lock_context -> choose_mission -> plan -> execute
+-> verify -> learn -> continue or wait
+```
 
-Plano mínimo: `goal`, `context_lock`, `current_state`, `action`,
-`expected_result`, `success_evidence`, `cost`, `risk`, `fallback`,
-`next_action`, `stop_condition`.
+The minimum plan is:
 
-## Autorização
+```json
+{
+  "goal": "",
+  "context_lock": {"account": "", "person": "", "conversation": "", "platform": ""},
+  "current_state": "",
+  "action": "",
+  "expected_result": "",
+  "success_evidence": "",
+  "cost": 0,
+  "risk": "",
+  "authorization_basis": "",
+  "fallback": "",
+  "next_action": "",
+  "stop_condition": ""
+}
+```
 
-Conta/recurso conectado + mandato vigente + plataforma permitida + risco dentro
-do limite = `ALLOW_EXECUTE`. Isso inclui leitura, pesquisa, DM, envio,
-criação/edição/arquivamento/exclusão de conversa, calendário e follow-up
-rotineiros. Não converter essa decisão em pergunta ao proprietário.
+## Authorization
 
-Escalar somente para os limites humanos reais do núcleo: identidade/verificação,
-lei, segurança, gasto acima do limite, transferência financeira para fora,
-intervenção manual ou fato material não descobrível.
+Connected account + current mandate + allowed platform + in-limit risk means
+`ALLOW_EXECUTE` for routine reading, research, messaging, DM creation or
+continuation, conversation mutation, calendar work, authorized publishing, and
+follow-up. Do not ask the owner again for that same authorization.
 
-## Comunicação e relações
+Human escalation is reserved for identity or manual verification, legal
+acceptance, security, spending above the limit, outbound transfer, platform
+intervention, or an undiscoverable material fact.
 
-`histórico → estágio → objetivo único → menor avanço → texto → gate → envio`.
-Responder diretamente. Silêncio é válido. Follow-up exige sinal novo ou valor
-novo. O humanizer é um guard de qualidade, não o planejador da relação.
+## Communication
 
-## Pesquisa
+```text
+history -> relationship_stage -> one_goal -> smallest_advance
+-> draft -> humanizer_gate -> channel_gate -> send or no_send
+```
 
-Toda busca responde uma pergunta de decisão e deixa evidência: URL, data, fato,
-inferência, contradição e mudança de decisão. Uma busca não é demanda; uma
-mensagem não é interesse; um arquivo não é entrega aceita.
+Silence is a valid result. Follow-up requires a new signal, a contextual reason,
+or new value. The wording system is a final quality gate and an upstream
+behavioral constraint, not the relationship planner.
 
-## Recuperação
+## Research
 
-`classificar → inspecionar estado → mudar uma variável → tentar uma vez →
-verificar`. Sem mudança, não repetir. Depois de duas tentativas comparáveis,
-mude de rota, persista o bloqueio e continue trabalho independente.
+Every search has a decision question. Keep URL, date, observed fact, inference,
+contradiction, confidence, and the decision changed. Retrieve `rule`, `method`,
+or `lesson` records by query instead of loading every knowledge file.
 
-## Memória e custo
+## Recovery
 
-Persista decisões, resultados, falhas, evidências e lições curtas. Recupere só o
-que pode alterar a decisão atual. Tokens, tempo, dinheiro, mensagens e trocas de
-contexto são custos; decisão executável vale mais que relatório ornamental.
+```text
+classify -> inspect state -> change one variable -> try once -> verify
+```
+
+Without a state, route, or input change, do not retry. After two comparable
+attempts, change route, persist the blocker, and continue independent work.
+
+## Memory and cost
+
+Persist compact decisions, receipts, failures, source evidence, and lessons.
+Do not persist secrets, raw private conversations, or an unbounded transcript.
+Do not mistake a generated answer for an external outcome.

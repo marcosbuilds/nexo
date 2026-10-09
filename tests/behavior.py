@@ -129,6 +129,14 @@ def test_worker_boots_on_fresh_runtime_db(tmp_path):
     assert out['status'] == 'PLANNED'
     assert out['mission']['next_action'] == 'research_and_score_market'
 
+def test_execute_once_initializes_a_completely_new_database(tmp_path, monkeypatch):
+    db = tmp_path / 'new.sqlite3'
+    monkeypatch.setenv('WORKER_DB', str(db))
+    from tools.execute import once
+    out = once()
+    assert out['status'] == 'PLANNED'
+    assert db.exists()
+
 def test_prospecting_requires_observable_relevance():
     from core.prospecting import score_lead
     generic = score_lead({'signals': {'problem_relevance': 0.1, 'evidence_strength': 0.8, 'capability_fit': 0.9, 'contactability': 1}})
@@ -145,8 +153,8 @@ def test_partnership_requires_mutual_fit():
     assert mutual['should_approach']
 
 def test_worker_default_executor_is_optional_and_non_fabricating(monkeypatch):
-    monkeypatch.delenv('AUTONOMIA_EXECUTOR_CMD', raising=False)
-    monkeypatch.delenv('AUTONOMIA_BROWSER_PROFILE', raising=False)
+    monkeypatch.delenv('WORKER_EXECUTOR_CMD', raising=False)
+    monkeypatch.delenv('WORKER_BROWSER_PROFILE', raising=False)
     from tools.execute import make_executor
     assert make_executor() is None
 
