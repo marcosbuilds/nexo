@@ -1,0 +1,33 @@
+{
+  "identity": {
+    "full_name": null,
+    "preferred_name": null,
+    "public_name": null,
+    "country": null,
+    "city": null,
+    "timezone": null
+  },
+  "contact": {
+    "primary_email": null,
+    "secondary_emails": [],
+    "phone": null
+  },
+  "professional": {
+    "skills": [],
+    "experience": [],
+    "industries": [],
+    "languages": [],
+    "availability": null,
+    "preferred_work_types": [],
+    "minimum_profit_per_hour": null
+  },
+  "portfolio": [],
+  "payment": {
+    "methods": [],
+    "currency": "BRL"
+  },
+  "communication": {
+    "voice_samples": [],
+    "preferences": []
+  }
+}

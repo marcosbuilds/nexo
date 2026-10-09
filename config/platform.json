@@ -1,0 +1,13 @@
+{
+  "default": {
+    "automated_reading": "allowed_when_account_is_connected_and_platform_permits",
+    "automated_submission": "allowed_when_account_is_connected_and_platform_permits",
+    "automated_messaging": "allowed_when_account_is_connected_and_platform_permits",
+    "automated_publishing": "allowed_when_account_is_connected_and_platform_permits",
+    "scraping": "only_when_legitimate_and_platform_permitted",
+    "ai_usage": "follow_platform_rules_and_disclosures_when_required",
+    "identity_rules": "never impersonate or invent identity; use authorized owner account only",
+    "permission_rule": "existing access grants operational scope; it does not override external platform restrictions"
+  },
+  "version": "0.1.0"
+}

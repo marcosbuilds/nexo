@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "purpose": "payment_receiving_readiness_and_safe_customer_checkout",
+  "discovery": {
+    "inspect_logged_in_web_sessions": true,
+    "inspect_existing_provider_accounts": true,
+    "inspect_api_capabilities_from_environment": true,
+    "inspect_verified_pix_destination": true,
+    "providers_are_discovered_not_hardcoded": [
+      "Mercado Pago",
+      "payment_gateway",
+      "bank_web"
+    ]
+  },
+  "capability_levels": [
+    "NONE",
+    "ACCOUNT_VISIBLE",
+    "CAN_REQUEST_PAYMENT",
+    "CAN_RECEIVE_PIX",
+    "CAN_CREATE_PAYMENT_LINK",
+    "CAN_VERIFY_RECEIPT"
+  ],
+  "security": {
+    "never_store_api_secret_plaintext_in_project_db": true,
+    "store_secret_ref_only": true,
+    "never_send_unverified_pix_key": true,
+    "payment_confirmation_requires_provider_evidence": true,
+    "never_treat_customer_screenshot_as_final_receipt": true,
+    "financial_transfers_are_not_autonomous_by_default": true,
+    "receiving_payments_is_distinct_from_transferring_funds_out": true
+  },
+  "customer_flow": {
+    "when_customer_requests_payment": [
+      "identify_sale_or_job_and_amount",
+      "confirm_customer_is_satisfied_when_a_satisfaction_milestone_exists",
+      "confirm_payment_destination_is_verified",
+      "send_one_clear_payment_method",
+      "record_expected_payment_event",
+      "verify_receipt_from_provider",
+      "confirm_payment_and_move_to_delivery_or_next_state"
+    ],
+    "no_verified_payment_destination": "do_not_guess; ask owner only as a true blocker while continuing independent work",
+    "authorization": {
+      "verified_payment_destination_is_pre_authorized": true,
+      "verified_provider_payment_link_is_pre_authorized": true,
+      "do_not_ask_owner_again_for_each_payment_request": true,
+      "create_link_when_sale_amount_and_authorized_provider_are_known": true,
+      "send_pix_when_customer_requests_and_destination_is_verified": true,
+      "owner_intervention_only_if_destination_or_provider_setup_is_missing": true
+    }
+  },
+  "payment_states": [
+    "not_ready",
+    "ready_to_receive",
+    "payment_requested",
+    "payment_detected",
+    "payment_verified",
+    "payment_failed",
+    "refunded"
+  ]
+}

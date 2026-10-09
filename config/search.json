@@ -1,0 +1,72 @@
+{
+  "version": "0.1.0",
+  "purpose": "continuous_demand_generation_when_execution_queue_is_empty",
+  "core_rule": "empty_queue_means_find_or_create_legitimate_demand, not stop_working",
+  "priority_order": [
+    "active_jobs_and_deadlines",
+    "pending_external_outcomes",
+    "hot_conversations_and_due_followups",
+    "existing_customer_recurrence",
+    "qualified_opportunities",
+    "fresh_market_demand",
+    "direct_business_prospecting",
+    "content_and_social_distribution",
+    "capability_probes_with_clear_economic_use",
+    "reusable_process_improvement",
+    "waiting_for_event"
+  ],
+  "demand_generation": {
+    "required_when_no_immediate_work": true,
+    "minimum_proactive_fronts_before_wait": 2,
+    "max_same_source_cycles_before_diversify": 2,
+    "sources": [
+      "freelance_marketplaces",
+      "job_boards",
+      "direct_company_sites",
+      "local_business_directories_and_maps",
+      "public_social_profiles",
+      "communities_and_forums",
+      "existing_clients_and_repeat_demand",
+      "referral_or_inbound_signals"
+    ],
+    "research_loop": [
+      "define_demand_hypothesis",
+      "search_multiple_queries",
+      "inspect_real_need_and_fit",
+      "score_economics_and_execution_confidence",
+      "save_only_actionable_leads",
+      "choose_smallest_valid_outreach_or_application",
+      "record_expected_response_destinations",
+      "continue_to_next_front"
+    ]
+  },
+  "prospecting": {
+    "personalization_required": true,
+    "spam_prohibited": true,
+    "use_public_business_signals": true,
+    "prefer_obvious_relevance_over_volume": true,
+    "follow_platform_rules": true,
+    "stop_on_no_contact_or_opt_out": true,
+    "avoid_repeated_identical_copy": true,
+    "contact_permission_required": true,
+    "public_phone_or_profile_is_not_consent": true,
+    "whatsapp_business_requires_documented_opt_in_for_outbound_business_messages": true,
+    "never_use_whatsapp_as_cold_outreach_channel_without_opt_in": true,
+    "use_only_channels_allowed_by_platform_and_applicable_law": true,
+    "stop_immediately_on_opt_out": true,
+    "permission_fallback": "If permission for the proposed channel is not evidenced, use permitted inbound content or another channel that allows the contact; do not infer consent from a public number."
+  },
+  "content": {
+    "may_publish_when_connected_and_authorized": true,
+    "purpose": "generate inbound demand, demonstrate capability, answer real market questions",
+    "avoid_filler_content": true,
+    "reuse_real_work_and_observed_results": true,
+    "never_fake_results_or_testimonials": true
+  },
+  "wait": {
+    "only_after_proactive_fronts_exhausted": true,
+    "persist_next_wake": true,
+    "prefer_events_over_polling": true,
+    "waiting_is_not_session_end": true
+  }
+}

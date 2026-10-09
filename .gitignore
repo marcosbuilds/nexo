@@ -1,0 +1,25 @@
+# Secrets / private runtime data
+.env
+.env.*
+**/secrets.*
+**/*token*
+**/*password*
+**/*otp*
+memory/owner.json
+memory/cache.json
+memory/*.local.json
+archive/
+docs/legacy/
+
+# Runtime noise
+logs/*.log
+workspace/*/working/
+workspace/jobs/*/source/
+workspace/jobs/*/final/
+screenshots/
+
+runtime_data/
+
+__pycache__/
+
+.pytest_cache/

@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "purpose": "deterministic_pre_send_naturalness_gate",
+  "mode": "block_then_regenerate",
+  "filler_openers": [
+    "ótimo",
+    "otimo",
+    "perfeito",
+    "entendi",
+    "entendo",
+    "claro,",
+    "com certeza,",
+    "sem problema,",
+    "fico feliz em",
+    "excelente,"
+  ],
+  "corporate_phrases": [
+    "de forma estratégica",
+    "solução personalizada",
+    "agregar valor",
+    "vale ressaltar",
+    "fico à disposição",
+    "espero que esteja bem"
+  ],
+  "chatbot_residue": [
+    "espero que isso ajude",
+    "espero ter ajudado",
+    "qualquer outra dúvida",
+    "posso ajudar em mais alguma coisa"
+  ],
+  "punctuation": {
+    "colon": {
+      "max_per_250_chars": 1,
+      "hard_fail_when_repeated": true,
+      "exceptions": [
+        "url",
+        "time",
+        "code",
+        "explicit_label",
+        "key_value_data"
+      ]
+    },
+    "em_dash": {
+      "max_per_250_chars": 1
+    },
+    "exclamation": {
+      "max_consecutive": 1
+    }
+  },
+  "rhythm": {
+    "max_sentences_per_bubble": 3,
+    "avoid_three_consecutive_short_sentences": true,
+    "avoid_identical_opening_across_recent_messages": true,
+    "avoid_all_bubbles_same_length": true
+  },
+  "commercial": {
+    "one_dominant_goal_per_turn": true,
+    "one_primary_cta_per_turn": true,
+    "prefer_specific_words_over_marketing_adjectives": true,
+    "do_not_add_persuasion_after_the_customer_already_committed": true
+  },
+  "action_on_failure": {
+    "regenerate_with_issues": true,
+    "preserve_facts_and_terms": true,
+    "never_send_failed_draft": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "project": "Nexo",
+  "slug": "nexo",
+  "version": "0.1.0",
+  "versioning": "semantic_versioning",
+  "versioning_reset": "The Nexo line starts at 0.1.0; Autonomia 2.x is historical only.",
+  "identity": "config/identity.json",
+  "active_source_of_truth": "docs/core.md",
+  "active_runtime_context": "docs/context.md",
+  "active_foundations": "docs/foundations.md",
+  "canonical_runtime_entrypoint": "tools/cycle.py",
+  "active_execution_kernel": "tools/execute.py",
+  "worker_profile": "memory/profile.json",
+  "schema": "data/schema.sql",
+  "legacy_archive": "docs/legacy/",
+  "local_only_paths": [
+    "memory/owner.json",
+    "memory/cache.json",
+    "runtime_data/",
+    "archive/",
+    ".env",
+    "screenshots/",
+    "workspace/"
+  ],
+  "release_requirements": [
+    "semantic_version_matches_project_identity_and_manifest",
+    "working_tree_is_reviewed_and_staged_intentionally",
+    "pytest_passes",
+    "python_compileall_passes",
+    "package_audit_passes",
+    "decision_audit_passes",
+    "active_legacy_scan_passes",
+    "no_personal_data_or_secrets_in_release",
+    "manifest_paths_exist_and_no_legacy_source_is_active",
+    "commit_message_is_present",
+    "annotated_version_tag_is_new",
+    "remote_is_explicit_before_push"
+  ],
+  "active_documents": [
+    "docs/core.md",
+    "docs/context.md",
+    "docs/foundations.md",
+    "config/identity.json",
+    "config/authorization.json",
+    "config/runtime.json",
+    "config/recovery.json",
+    "config/communication.json"
+  ],
+  "policy_sources": {
+    "authorization": "config/authorization.json",
+    "runtime": "config/runtime.json",
+    "error_recovery": "config/recovery.json",
+    "communication": "config/communication.json",
+    "market": "config/market.json",
+    "design": "config/design.json"
+  },
+  "runtime_database": {
+    "shipped": false,
+    "environment": "NEXO_DB",
+    "legacy_environment_fallback": "AUTONOMIA_DB",
+    "default": "runtime_data/nexo.sqlite3",
+    "replace_existing_on_update": false
+  }
+}

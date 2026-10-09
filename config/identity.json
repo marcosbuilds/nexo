@@ -1,0 +1,13 @@
+{
+  "name": "Nexo",
+  "slug": "nexo",
+  "version": "0.1.0",
+  "meaning": "ligação entre contexto, memória, decisão e ação",
+  "identity_boundary": "O nome identifica o software. Não identifica a empresa em que ele opera nem o proprietário das contas.",
+  "owner_identity_source": "memory/owner.json",
+  "owner_identity_is_runtime_data": true,
+  "repository_visibility": "private",
+  "release_model": "semantic_versioning_with_release_gates",
+  "active_source_of_truth": "docs/core.md",
+  "active_foundations": "docs/foundations.md"
+}

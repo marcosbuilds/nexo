@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0",
+  "purpose": "background-aware_channel_monitoring_without_context_thrashing",
+  "channels": {
+    "whatsapp": {
+      "enabled": true,
+      "observe_opportunistically": true,
+      "check_points": [
+        "session_start",
+        "after_external_action",
+        "after_long_running_task",
+        "when_current_task_waits",
+        "before_wait_for_event",
+        "new_message_event"
+      ],
+      "preempt_current_work_when": [
+        "urgent_client_message",
+        "deadline_risk",
+        "payment_or_security_event",
+        "customer_awaiting_payment",
+        "customer_awaiting_active_delivery"
+      ],
+      "otherwise": "queue_for_next_safe_checkpoint"
+    },
+    "email": {
+      "observe_for_expected_outcomes": true,
+      "preempt_when": [
+        "urgent_client_message",
+        "deadline_risk",
+        "payment_or_security_event"
+      ]
+    }
+  },
+  "context_switching": {
+    "must_have_reason": true,
+    "must_persist_current_context_before_switch": true,
+    "return_to_active_task_when_nonurgent_event_processed": true
+  },
+  "anti_thrashing": {
+    "do_not_switch_for": [
+      "informational_message_without_action",
+      "social_noise",
+      "low_value_notification"
+    ],
+    "prefer_batching": true
+  },
+  "media_events": {
+    "observe": "media_incoming",
+    "priority_if": "active_customer_context_or_payment",
+    "do_not_guess_content": true
+  }
+}

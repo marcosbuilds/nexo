@@ -1,0 +1,92 @@
+{
+  "version": "0.1.0",
+  "purpose": "generalized_error_treatment_and_recovery",
+  "principle": "classify_once_recover_locally_record_evidence_learn_globally",
+  "classes": {
+    "TRANSIENT_NETWORK": {
+      "retry": true,
+      "max_attempts": 2,
+      "backoff": "exponential_jitter",
+      "fallback": "alternate_route_or_wait"
+    },
+    "RATE_LIMIT": {
+      "retry": true,
+      "max_attempts": 2,
+      "backoff": "provider_retry_after_or_exponential",
+      "fallback": "switch_queue_or_wait"
+    },
+    "AUTH_EXPIRED": {
+      "retry": false,
+      "fallback": "revalidate_session_then_continue",
+      "human_if_required": true
+    },
+    "PERMISSION_DENIED": {
+      "retry": false,
+      "fallback": "check_alternate_authorized_account_or_route",
+      "human_if_required": true
+    },
+    "CAPABILITY_UNAVAILABLE": {
+      "retry": false,
+      "fallback": "choose_registered_capability_fallback_or_request_supported_input"
+    },
+    "MEDIA_INACCESSIBLE": {
+      "retry": false,
+      "fallback": "request_normal_resend_or_text"
+    },
+    "VIEW_ONCE_INACCESSIBLE": {
+      "retry": false,
+      "fallback": "request_normal_resend_or_text"
+    },
+    "AMBIGUOUS_IDENTITY": {
+      "retry": false,
+      "fallback": "exact_identifier_resolution_or_human_queue"
+    },
+    "STALE_STATE": {
+      "retry": true,
+      "max_attempts": 2,
+      "backoff": "short",
+      "fallback": "refresh_external_state_then_replan"
+    },
+    "DUPLICATE_RISK": {
+      "retry": false,
+      "fallback": "idempotency_check_before_repeat"
+    },
+    "VALIDATION_FAILED": {
+      "retry": true,
+      "max_attempts": 2,
+      "backoff": "none",
+      "fallback": "repair_input_then_retry"
+    },
+    "CONTENT_BLOCKED": {
+      "retry": false,
+      "fallback": "rephrase_or_choose_compliant_route"
+    },
+    "UNKNOWN": {
+      "retry": true,
+      "max_attempts": 1,
+      "backoff": "short",
+      "fallback": "isolate_and_escalate_with_context"
+    }
+  },
+  "global_rules": {
+    "no_blind_retry": true,
+    "no_same_action_repeat_without_state_change": true,
+    "idempotency_key_for_external_side_effects": true,
+    "record_error_class_and_evidence": true,
+    "cooldown_repeated_failures": true,
+    "open_circuit_after_repeated_provider_failures": true,
+    "continue_independent_work": true,
+    "learn_provider_specific_failures": true,
+    "never_claim_success_before_verification": true
+  },
+  "circuit_breaker": {
+    "failure_threshold": 3,
+    "cooldown_seconds": 300,
+    "half_open_probe": true
+  },
+  "idempotency": {
+    "scope": "action_context_payload",
+    "hash_algorithm": "sha256",
+    "reuse_successful_result": true
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "version": "0.1.0",
+  "purpose": "mandate_scoped_autonomous_execution_without_micro_confirmation",
+  "core_rule": "mandate_plus_verified_capability_plus_context_authorizes_execution_without_micro_confirmation",
+  "connected_access_rule": "a functioning connected account is operational authority for routine actions inside that account scope",
+  "authorization_sources": [
+    {
+      "source": "owner_mandate",
+      "strength": "explicit"
+    },
+    {
+      "source": "connected_account_permission",
+      "strength": "explicit_for_account_scope"
+    },
+    {
+      "source": "verified_resource",
+      "strength": "explicit_for_resource_use"
+    },
+    {
+      "source": "prior_decision",
+      "strength": "inherited_until_scope_expiry_or_revocation"
+    },
+    {
+      "source": "customer_request",
+      "strength": "request_scope_only"
+    }
+  ],
+  "default_operational_scope": {
+    "normal_communication": true,
+    "send_messages_on_authorized_channels": true,
+    "create_payment_links_on_verified_provider": true,
+    "send_verified_pix_destination_when_customer_requests_payment": true,
+    "consult_authorized_calendar": true,
+    "create_internal_reminders": true,
+    "create_calendar_events_when_calendar_write_permission_exists": true,
+    "schedule_followups": true,
+    "check_payment_receipts": true,
+    "run_low_risk_probes": true,
+    "retry_transient_failures": true,
+    "switch_to_registered_fallbacks": true,
+    "continue_independent_work_while_blocked": true,
+    "publish_on_authorized_social_accounts": true,
+    "create_and_distribute_authorized_content": true,
+    "conduct_low_risk_prospecting_on_authorized_channels": true,
+    "research_public_business_demand": true,
+    "create_internal_sales_materials": true,
+    "price_grounded_quotes": true,
+    "continue_demand_generation_when_idle": true,
+    "wait_for_events_without_ending_runtime": true,
+    "start_or_continue_dm": true,
+    "create_edit_archive_delete_conversation": true
+  },
+  "approval_required_only_for": [
+    "identity_verification",
+    "legal_documents_or_binding_legal_acceptance",
+    "irreversible_high_risk_action",
+    "financial_spend_above_configured_limit",
+    "financial_transfer_out",
+    "credential_creation_or_password_change_when_platform_requires_owner",
+    "security_incident",
+    "material_missing_fact_not_discoverable",
+    "platform_manual_intervention_required"
+  ],
+  "payment_specific": {
+    "verified_destination_is_authorized_for_receiving": true,
+    "creating_payment_link_does_not_need_owner_confirmation_when_provider_is_authorized": true,
+    "sending_verified_pix_does_not_need_owner_confirmation_when_customer_requested_payment": true,
+    "never_expose_unverified_destination": true,
+    "amount_must_be_grounded_in_sale_or_agreement": true,
+    "payment_receipt_verification_remains_autonomous": true
+  },
+  "confirmation_anti_patterns": [
+    "ask_permission_for_already_authorized_action",
+    "ask_same_confirmation_after_authorization_was_resolved",
+    "end_session_only_to_request_basic_confirmation",
+    "ask_owner_to_choose_between_obvious_low_risk_routes",
+    "ask_owner_to_confirm_facts_that_can_be_verified_in_environment",
+    "repeat_same_permission_question_without_new_blocker",
+    "declare_session_complete_before_executable_commitment_is_terminal",
+    "leave_authorized_action_in_planned_state_after_deciding_to_execute",
+    "treat_owner_response_request_as_successful_action",
+    "ask_permission_when_connected_account_scope_already_grants_the_action",
+    "ask_permission_to_start_or_continue_a_dm_when_the_connected_account_can_do_it",
+    "ask_permission_to_edit_archive_or_delete_a_conversation_inside_the_connected_account",
+    "ask_for_confirmation_before_publish_send_or_link_creation_when_account_and_policy_allow_it",
+    "stop_working_when_inbox_is_empty",
+    "treat_no_customer_message_as_no_business_work",
+    "send_the_full_sales_journey_in_one_message"
+  ],
+  "delegation_precedence": [
+    "explicit_revocation",
+    "security_or_legal_block",
+    "risk_limit",
+    "platform_constraints",
+    "verified_resource_scope",
+    "owner_mandate",
+    "customer_request",
+    "model_preference"
+  ],
+  "universal_preflight": {
+    "routine_action_rule": "owner_mandate + verified_resource_or_account_permission + platform_allowed + risk_within_limit -> ALLOW",
+    "no_micro_confirmation": true,
+    "confirmation_is_not_an_execution_state": true,
+    "action_must_reach_terminal_state": true,
+    "owner_confirmation_is_only_for_real_human_boundary": true
+  },
+  "operational_interpretation": {
+    "connected_access_is_permission": true,
+    "meaning": "a connected, functioning account/session/resource authorizes routine actions within its existing scope; do not ask the owner again",
+    "routine_conversation_actions_are_in_scope": [
+      "start_or_continue_dm",
+      "send_message",
+      "edit_conversation",
+      "archive_conversation",
+      "delete_conversation"
+    ],
+    "still_checked": [
+      "explicit_revocation",
+      "platform_constraints",
+      "risk_limits",
+      "security",
+      "legal",
+      "financial_limits",
+      "manual_human_boundaries"
+    ]
+  }
+}

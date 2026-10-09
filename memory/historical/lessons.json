@@ -1,0 +1,42 @@
+[
+  {
+    "source": "Autonomia historical DB/docs",
+    "event_date": "2026-10-06",
+    "event": "Small-ticket SMS sale encountered unexpected top-up economics.",
+    "result": "Observed that acquisition/recarga costs could erase margin.",
+    "lesson": "Always calculate real total cost before treating a nominal sale price as profitable.",
+    "confidence": 0.95
+  },
+  {
+    "source": "Autonomia historical docs",
+    "event_date": "2026-10-06",
+    "event": "Long WhatsApp messages were revised into short channel-native messages.",
+    "result": "A dedicated short-message process was documented.",
+    "lesson": "Communication quality depends on channel conventions and conversation context.",
+    "confidence": 0.9
+  },
+  {
+    "source": "Autonomia historical DB",
+    "event_date": "2026-10-06",
+    "event": "Facebook public replies were automatically rejected and private messaging was later restricted.",
+    "result": "External actions triggered platform friction.",
+    "lesson": "Platform policy and account-health risk must be part of the decision model; do not route around restrictions.",
+    "confidence": 0.95
+  },
+  {
+    "source": "Autonomia historical DB/docs",
+    "event_date": "2026-10-05/06",
+    "event": "Many research/publication steps occurred without a confirmed sale.",
+    "result": "Activity increased faster than economic outcome.",
+    "lesson": "Session completion must require a real outcome or meaningful operational leap.",
+    "confidence": 0.95
+  },
+  {
+    "source": "Autonomia historical docs",
+    "event_date": "2026-10-06",
+    "event": "Manual confirmations were being refined to avoid stopping the agent too often.",
+    "result": "A smaller set of human checkpoints was identified.",
+    "lesson": "Batch human interventions and continue independent work instead of stopping at every blocker.",
+    "confidence": 0.95
+  }
+]

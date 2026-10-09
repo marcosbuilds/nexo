@@ -1,0 +1,240 @@
+{
+  "version": "0.1.0",
+  "autonomy_mode": "continuous_decision_with_human_escalation",
+  "worker_is_primary_actor": true,
+  "owner_is_identity_authority_not_default_worker": true,
+  "owner_skills_not_required_for_market_discovery": true,
+  "discover_worker_capabilities_from_environment": true,
+  "build_worker_capability_profile": true,
+  "human_requests_only_at_session_end": true,
+  "allow_critical_human_interrupt": true,
+  "humanizer_required": true,
+  "history_before_reply": true,
+  "context_before_external_action": true,
+  "compare_with_history_before_repeat": true,
+  "allow_research_only_session_exit": false,
+  "require_real_outcome": true,
+  "allow_no_response_decision": true,
+  "allow_opportunistic_channel_checks": true,
+  "allow_autonomous_low_risk_social_engagement": true,
+  "batch_human_blockers": true,
+  "max_repeated_action": 2,
+  "require_meaningful_change_for_retry": true,
+  "never_invent_identity_or_facts": true,
+  "identity_disclosure": "do_not_volunteer_internal_agent_identity_but_never_lie_when_directly_asked_or_required",
+  "communication": {
+    "owner_whatsapp_questions_authorized": true,
+    "prefer_one_need_per_message": true,
+    "avoid_onboarding_questionnaires": true,
+    "humanizer_before_owner_messages": true,
+    "humanizer_hard_gate": true,
+    "plan_before_draft": true,
+    "silence_is_valid": true,
+    "no_repeated_unanswered_followup": true
+  },
+  "finance": {
+    "max_auto_spend_per_action": 5.0,
+    "max_auto_spend_per_day": 20.0,
+    "currency": "BRL"
+  },
+  "opportunity_strategy": "adaptive_market_first_worker_capability_discovery",
+  "programming_is_not_default": true,
+  "require_application_before_substantial_build": true,
+  "require_execution_plan_after_acceptance": true,
+  "require_environment_discovery_after_acceptance": true,
+  "prefer_existing_tools_over_new_builds": true,
+  "tokens_are_operational_resource": true,
+  "direct_identifier_resolution_preferred": true,
+  "fuzzy_identity_match_never_authoritative": true,
+  "allow_direct_company_discovery": true,
+  "context_lock_before_external_action": true,
+  "expected_result_required_for_relevant_action": true,
+  "autonomous_route_selection": true,
+  "bounded_pre_acceptance_proof": true,
+  "post_action_consequence_tracking": true,
+  "probe_before_build": true,
+  "worker_profile": {
+    "source_priority": [
+      "existing_tools",
+      "existing_accounts",
+      "small_capability_tests",
+      "completed_jobs",
+      "portfolio_evidence",
+      "owner_facts_when_material"
+    ],
+    "require_evidence_before_proficiency_claim": true,
+    "do_not_block_market_search_on_owner_skill_list": true
+  },
+  "continuous_runtime": true,
+  "session_wait_state_supported": true,
+  "do_not_end_for_temporary_empty_queue": true,
+  "work_seeking_cycle_required": true,
+  "verify_pending_outcomes_before_waiting": true,
+  "persist_next_wake_before_waiting": true,
+  "allow_wait_for_event_without_session_end": true,
+  "communication_policy": "config/communication.json",
+  "conversation_plan_required_for_commercial_context": true,
+  "message_packaging_required": true,
+  "greeting_by_local_time": true,
+  "persuasion_mechanisms_per_turn": 2,
+  "ethical_persuasion_only": true,
+  "never_fake_scarcity_or_urgency": true,
+  "proposal_requires_simple_language_and_clear_next_step": true,
+  "follow_up_requires_new_or_contextual_reason": true,
+  "max_unanswered_followups": 2,
+  "behavioral_upgrade_2_1": {
+    "media_input_triage": "required",
+    "view_once_fallback": "request_normal_resend_or_text",
+    "audio_transcription_failure": "request_text",
+    "image_video_failure": "request_reupload_or_description",
+    "customer_scoring": "evidence_based_priority",
+    "customer_lifecycle_memory": "required_for_commercial_context",
+    "payment_readiness_discovery": "required_before_offering_payment",
+    "payment_receipt_verification": "provider_evidence_preferred",
+    "satisfaction_before_review": "required",
+    "humanizer_hard_gate": "block_send_on_guard_failure",
+    "stock_acknowledgment_reduction": "enabled",
+    "ordinary_chat_colon_reduction": "enabled",
+    "post_sale_consequence_cycle": "required"
+  },
+  "confirmation_policy": "config/authorization.json",
+  "error_policy": "config/recovery.json",
+  "calendar_policy": "config/calendar.json",
+  "do_not_confirm_already_authorized_actions": true,
+  "receiving_payment_is_pre_authorized_when_destination_verified": true,
+  "payment_link_creation_is_pre_authorized_when_provider_capability_verified": true,
+  "basic_action_confirmation_is_forbidden": true,
+  "error_recovery": {
+    "classify_before_retry": true,
+    "max_identical_retries": 1,
+    "require_state_change_before_repeat": true,
+    "idempotency_for_side_effects": true,
+    "continue_independent_work_after_isolated_failure": true,
+    "no_blind_retry": true
+  },
+  "agenda": {
+    "read_authorized_calendars": true,
+    "create_internal_reminders": true,
+    "create_calendar_events_with_existing_write_permission": true,
+    "persist_wake_queue": true,
+    "use_push_or_webhook_when_provider_supports_it": true,
+    "never_poll_continuously_without_reason": true,
+    "wake_sources": [
+      "internal_reminders",
+      "calendar_changes",
+      "conversation_followups",
+      "payment_checks",
+      "delivery_deadlines",
+      "session_next_action"
+    ]
+  },
+  "wake_queue_first": true,
+  "micro_confirmation": {
+    "forbidden_for_authorized_routine_actions": true,
+    "authorization_preflight": "tools/operate.py"
+  },
+  "behavioral_revision": "0.1.0",
+  "execution_liveness": {
+    "enabled": true,
+    "canonical_guard": "tools/liveness.py",
+    "commitment_table": "execution_commitments",
+    "forbidden_when_authorized_and_executable": [
+      "ASK_PERMISSION",
+      "WAITING_OWNER",
+      "END_SESSION",
+      "NO_ACTION"
+    ],
+    "required_terminal_states": [
+      "VERIFIED",
+      "BLOCKED",
+      "CANCELLED"
+    ],
+    "execution_receipt_required_for_success": true,
+    "confirmation_request_is_non_progress": true,
+    "repeated_confirmation_does_not_reset_commitment": true,
+    "max_no_progress_cycles_before_inspection": 1,
+    "inspect_before_duplicate_retry": true,
+    "block_session_end_while_executable_or_in_flight": true
+  },
+  "database_runtime_policy": {
+    "shipped_db": false,
+    "schema_shipped": true,
+    "path_env": "NEXO_DB",
+    "legacy_path_env": "AUTONOMIA_DB",
+    "default_path": "runtime_data/nexo.sqlite3",
+    "never_replace_existing_runtime_db_on_code_update": true,
+    "all_runtime_tools_use_canonical_db_helper": "tools/db.py"
+  },
+  "context_runtime": {
+    "entrypoint": "docs/context.md",
+    "loader": "tools/context.py",
+    "load_once_per_cycle": true,
+    "do_not_reload_full_project": true,
+    "retrieve_specific_detail_only_when_needed": true,
+    "foundation_reference": "docs/foundations.md"
+  },
+  "empty_queue_behavior": {
+    "never_end_just_because_queue_is_empty": true,
+    "run_work_seeking_before_wait": true,
+    "planner": "tools/search.py",
+    "minimum_proactive_fronts_before_wait": 2,
+    "waiting_is_not_ended": true
+  },
+  "connected_access": {
+    "operational_permission_within_account_scope": true,
+    "no_micro_confirmation": true,
+    "routine_conversation_mutations": true,
+    "exceptions": [
+      "explicit_revocation",
+      "security_boundary",
+      "legal_boundary",
+      "financial_spend_limit",
+      "platform_manual_intervention",
+      "material_fact_not_discoverable"
+    ]
+  },
+  "communication_core": {
+    "humanizer_is_upstream_and_downstream": true,
+    "upstream_controls": [
+      "when_to_speak",
+      "when_not_to_speak",
+      "message_length",
+      "pace",
+      "tone",
+      "cta",
+      "adaptation"
+    ],
+    "downstream_guard": "tools/humanize.py",
+    "triage_gate": "tools/communicate.py",
+    "no_response_is_valid": true,
+    "smallest_useful_next_step": true,
+    "whatsapp_default_bubbles": "1-3"
+  },
+  "demand_generation": {
+    "policy": "config/search.json",
+    "required_when_no_immediate_work": true,
+    "search_multiple_sources": true,
+    "diversify_after_repeated_source_use": true,
+    "content_may_create_inbound_demand_when_connected": true
+  },
+  "pricing": {
+    "policy": "config/pricing.json",
+    "tool": "tools/quote.py",
+    "evidence_based": true,
+    "record_actual_effort_after_delivery": true
+  },
+  "canonical_runtime_entrypoint": "tools/cycle.py",
+  "active_execution_model": "worker_owned_missions",
+  "mission_layer": {
+    "required": true,
+    "generator": "core.mission.generate_default_missions",
+    "rank_by": "expected_utility",
+    "action_is_subordinate_to_mission": true
+  },
+  "execution": {
+    "browser_adapter": "adapters.browser",
+    "manual_boundary_detection": true,
+    "receipt_required": true,
+    "single_worker_lease": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "version": "0.1.0",
+  "purpose": "Make visual assets specific, intuitive, platform-native and recognizably connected to the client instead of generic AI-looking templates.",
+  "cross_platform": {
+    "brief_before_canvas": true,
+    "one_primary_goal_per_asset": true,
+    "one_dominant_message": true,
+    "one_primary_call_to_action": true,
+    "research_real_brand_before_design": true,
+    "prefer_existing_client_assets_when_authorized": true,
+    "generate_visual_assets_separately_from_editable_text": true,
+    "do_not_invent_prices_offers_testimonials_results_or_availability": true,
+    "design_for_target_device_and_platform": true,
+    "inspect_at_thumbnail_size": true,
+    "check_contrast_and_legibility": true,
+    "use_whitespace_deliberately": true,
+    "limit_font_families_to_two_unless_brand_requires_more": true,
+    "avoid_decorative_effects_without_function": true,
+    "avoid_reusing_the_same_layout_across_all_clients": true,
+    "keep_editable_source_file_when_platform_allows": true
+  },
+  "canva": {
+    "preferred_workflow": [
+      "inspect the real business profile/site and available brand assets",
+      "define the audience, campaign goal, single key message and measurable next action",
+      "create a specific art direction and choose the intended output format",
+      "use Canva Magic Media / Canva AI to generate a custom visual element when it improves the concept",
+      "compose and refine the design in Canva with editable text, grid, hierarchy and intentional spacing",
+      "use Magic Design as a layout starting point only when the brief and content are specific enough",
+      "review mobile legibility, factual accuracy, visual artifacts and platform crop before export"
+    ],
+    "magic_media": {
+      "use_for": ["hero photography", "transparent cutout asset when supported", "supporting visual object", "custom background or scene", "unavailable specific visual that stock search cannot provide"],
+      "prompt_fields_required": ["commercial purpose", "specific subject/action", "realistic environment", "composition and crop", "lighting", "surface/material detail", "brand-compatible palette", "space for editable copy", "output ratio", "negative constraints"],
+      "generate_text_inside_image": false,
+      "use_generated_text_as_final_copy": false,
+      "if_results_are_generic": ["change the visual concept and camera/composition, not just adjectives", "specify the exact service/object/action", "describe what must be visible and where negative space should remain", "remove irrelevant decorative objects", "generate a new variation from the complete prompt"]
+    },
+    "magic_design": {
+      "use_when": "The page structure, copy, audience and goal are known and Canva can use them to suggest a composition.",
+      "do_not_use_as": "A substitute for market research, art direction, custom visual assets or quality review."
+    },
+    "anti_artificial_visuals": [
+      "avoid generic purple-blue gradients, random glowing blobs, floating glass cards and decorative 3D icons unless the brand/concept genuinely calls for them",
+      "avoid excessive shadows, outlines, glow, bevel, fake depth and layers that do not improve hierarchy",
+      "avoid stock-photo sameness, plastic skin, impossible reflections, warped fingers, malformed tools, inconsistent product geometry and synthetic food texture",
+      "do not default every business to black-and-gold luxury styling",
+      "prefer believable light, tactile materials, natural imperfections and context-specific details",
+      "use a strong but restrained focal point rather than filling every empty area"
+    ]
+  },
+  "format_guidance": {
+    "instagram_feed_portrait": {"ratio": "4:5", "size": "1080x1350", "use": "single feed post with a clear hierarchy"},
+    "instagram_square": {"ratio": "1:1", "size": "1080x1080", "use": "square grid or multi-platform reuse when requested"},
+    "instagram_story": {"ratio": "9:16", "size": "1080x1920", "use": "story sequence, promotion or vertical narrative"},
+    "whatsapp_status": {"ratio": "9:16", "size": "1080x1920", "use": "status creative readable on a phone screen"},
+    "whatsapp_share_card": {"ratio": "4:5", "size": "1080x1350", "use": "shareable image shown inside a chat; keep copy minimal"}
+  },
+  "quality_gate": [
+    "A viewer can identify the business/category and message within two seconds.",
+    "The main message remains readable at phone size without zooming.",
+    "The design has one obvious focal point and a clear reading order.",
+    "The CTA is visible, specific and points to a real confirmed channel.",
+    "The offer, price, address, dates, results and claims match evidence.",
+    "The image subject, composition and palette fit this client rather than a reusable generic template.",
+    "Generated visual artifacts are inspected; a bad AI image is replaced, not excused.",
+    "Spacing, margins, contrast, crop and alignment are consistent.",
+    "The editable copy is not baked into the generated photo/element.",
+    "The export dimensions and crop fit the destination platform."
+  ],
+  "platform_adaptation": {
+    "instagram": "Use a thumb-stopping focal point, short hierarchy and crop-safe content; do not turn every post into a price poster.",
+    "whatsapp": "Make the message understandable at a glance, keep copy short, make the reply/order action obvious, and avoid sending a wall of text as an image.",
+    "website_or_landing_page": "Prioritize clear information scent, scan-friendly sections, real proof and a visible next action over decorative effects.",
+    "presentation": "Build one idea per page with a visual that explains the idea, not a stock image added to fill space.",
+    "other": "Inspect the target platform's current format and constraints before composing or exporting."
+  }
+}

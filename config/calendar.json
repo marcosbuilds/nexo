@@ -1,0 +1,43 @@
+{
+  "version": "0.1.0",
+  "purpose": "agenda_awareness_and_durable_internal_wakeups",
+  "sources": [
+    "local_reminder_store",
+    "google_calendar",
+    "microsoft_graph_calendar",
+    "other_authorized_calendar_provider"
+  ],
+  "abilities": {
+    "read_schedule": true,
+    "create_internal_reminder": true,
+    "create_calendar_event_when_write_permission_exists": true,
+    "update_calendar_event_when_write_permission_exists": true,
+    "cancel_calendar_event_when_context_is_unambiguous": true,
+    "find_free_time": true,
+    "set_wake_for_due_work": true,
+    "watch_calendar_changes_when_provider_supports_webhooks": true
+  },
+  "default_behavior": {
+    "prefer_push_or_webhook_over_polling_when_supported": true,
+    "persist_next_wake_before_waiting": true,
+    "internal_reminder_does_not_require_calendar_provider": true,
+    "never_poll_calendar_continuously_without_reason": true,
+    "deduplicate_same_reminder": true,
+    "reconcile_external_calendar_after_resume": true
+  },
+  "reminder_types": [
+    "owner_reminder",
+    "customer_followup",
+    "payment_check",
+    "delivery_deadline",
+    "meeting",
+    "research_resume",
+    "system_maintenance"
+  ],
+  "human_confirmation": {
+    "internal_reminder": false,
+    "calendar_event_on_authorized_calendar": false,
+    "external_invitation_with_nontrivial_commitment": true,
+    "binding_change_to_existing_meeting_with_high_impact": true
+  }
+}

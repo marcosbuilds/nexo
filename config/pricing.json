@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "purpose": "grounded_commercial_pricing",
+  "principle": "price_the_actual_scope_and_value; never invent a number just to close",
+  "required_inputs": [
+    "scope",
+    "estimated_or_actual_hours",
+    "direct_costs",
+    "revision_risk",
+    "quality_level",
+    "market_evidence_when_available"
+  ],
+  "floor": {
+    "formula": "max(direct_costs, hours * effective_hourly_floor)",
+    "currency": "BRL"
+  },
+  "adjustments": {
+    "complexity": "0.00_to_1.00",
+    "revision_risk": "0.00_to_1.00",
+    "urgency": "only_when_real_deadline_exists",
+    "market_position": "evidence_based"
+  },
+  "quote_rules": [
+    "explain what is included",
+    "separate optional extras",
+    "state delivery scope and revision limits",
+    "use a range when uncertainty is material",
+    "never claim a discount, scarcity or deadline without evidence",
+    "after delivery, record actual effort and outcome to improve future pricing"
+  ]
+}

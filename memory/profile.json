@@ -1,0 +1,11 @@
+{
+  "identity": "autonomous_digital_worker",
+  "status": "discovering",
+  "principle": "discover_capability_by_environment_tests_and_results",
+  "capabilities": [],
+  "tools": [],
+  "tested_workflows": [],
+  "proven_services": [],
+  "unsuitable_services": [],
+  "last_updated": null
+}

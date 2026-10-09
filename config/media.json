@@ -1,0 +1,73 @@
+{
+  "version": "0.1.0",
+  "purpose": "channel_agnostic_media_capability_and_recovery",
+  "principles": {
+    "never_claim_to_have_heard_seen_or_watched_media_without_success": true,
+    "capability_is_runtime_observation_not_platform_assumption": true,
+    "view_once_is_a_hard_access_boundary_when_web_session_cannot_open_it": true,
+    "ask_for_reupload_or_text_only_when_needed": true,
+    "same_rule_applies_across_channels": true
+  },
+  "media_types": [
+    "audio",
+    "image",
+    "video",
+    "document",
+    "sticker",
+    "view_once"
+  ],
+  "required_capabilities": {
+    "audio": [
+      "download",
+      "decode",
+      "transcribe"
+    ],
+    "image": [
+      "download",
+      "preview",
+      "vision_analysis"
+    ],
+    "video": [
+      "download",
+      "preview",
+      "frame_analysis"
+    ],
+    "document": [
+      "download",
+      "parse"
+    ],
+    "sticker": [
+      "download",
+      "preview"
+    ],
+    "view_once": [
+      "explicit_access_check"
+    ]
+  },
+  "fallbacks": {
+    "audio_transcription_failed": {
+      "decision": "REQUEST_TEXT",
+      "message": "Não consegui ouvir esse áudio agora. Pode me mandar em texto?"
+    },
+    "audio_unavailable": {
+      "decision": "REQUEST_TEXT",
+      "message": "Não consigo acessar esse áudio por aqui agora. Se puder, escreve aqui o que precisa."
+    },
+    "view_once_unavailable": {
+      "decision": "REQUEST_RESHARE_NORMAL",
+      "message": "Essa mídia foi enviada em visualização única e não consigo abrir por aqui. Pode reenviar como mídia normal ou me mandar em texto?"
+    },
+    "image_preview_failed": {
+      "decision": "REQUEST_REUPLOAD_OR_DESCRIBE",
+      "message": "Não consegui abrir essa imagem agora. Pode reenviar a foto normalmente ou me dizer o que aparece nela?"
+    },
+    "video_preview_failed": {
+      "decision": "REQUEST_REUPLOAD_OR_DESCRIBE",
+      "message": "Não consegui abrir esse vídeo agora. Pode reenviar normalmente ou me explicar a parte que preciso ver?"
+    },
+    "document_parse_failed": {
+      "decision": "REQUEST_REUPLOAD_OR_TEXT",
+      "message": "Não consegui ler esse arquivo agora. Pode reenviar ou colar aqui a parte importante?"
+    }
+  }
+}

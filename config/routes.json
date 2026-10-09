@@ -1,0 +1,70 @@
+{
+  "version": "0.1.0",
+  "description": "Generalized consequence tracing templates. Examples are patterns, not platform-specific rules.",
+  "event_classes": [
+    {
+      "class": "async_external_action",
+      "signals": [
+        "reply",
+        "approval",
+        "rejection",
+        "status_change",
+        "notification"
+      ],
+      "destination_types": [
+        "origin_surface",
+        "associated_email",
+        "associated_notification_channel",
+        "related_system"
+      ],
+      "default_probe": "discover_associated_destinations_before_waiting"
+    },
+    {
+      "class": "accepted_work",
+      "signals": [
+        "requirements",
+        "credentials",
+        "files",
+        "account_access",
+        "external_environment"
+      ],
+      "destination_types": [
+        "required_app",
+        "required_account",
+        "required_filesystem",
+        "client_system"
+      ],
+      "default_probe": "environment_discovery_before_build"
+    },
+    {
+      "class": "direct_identifier",
+      "signals": [
+        "resolved_entity",
+        "match_confirmation"
+      ],
+      "destination_types": [
+        "direct_resource",
+        "direct_conversation",
+        "direct_record"
+      ],
+      "default_probe": "normalize_and_resolve_exact_identifier"
+    },
+    {
+      "class": "economic_event",
+      "signals": [
+        "payment",
+        "invoice",
+        "acceptance",
+        "refund",
+        "fee"
+      ],
+      "destination_types": [
+        "platform_finance",
+        "associated_email",
+        "payment_system",
+        "client_confirmation"
+      ],
+      "default_probe": "verify_financial_state_and_evidence"
+    }
+  ]
+}
